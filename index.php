@@ -177,6 +177,8 @@ main {
 <body>
     <header>
         <h1>Vatika Yayasan</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam iste assumenda quam, animi nostrum earum necessitatibus pariatur dicta ut saepe nulla eveniet, totam hic quas ea? Consectetur reprehenderit sint amet!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A, quasi.</p>
     </header>
     <nav>
         <div class="navbar">
