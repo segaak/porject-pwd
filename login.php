@@ -1,12 +1,27 @@
 <?php
 session_start();
+require 'function.php';
+//cek cookie dahulu saat membuka web
+if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+    $id = $_COOKIE['id'];
+    $key = $_COOKIE['key'];
 
+    //ambil username berdasarkan id
+    $result = mysqli_query($conn, "SELECT username FROM admin WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    //cek cookie dan username
+    if ($key === hash('sha256', $row['username'])) {
+        $_SESSION['login'] = true;
+    }
+}
+
+// set jika cookie masih ada login ke index
 if (isset($_SESSION["login"])) {
     header("Location: donasi.php");
     exit;
 }
 
-require 'function.php';
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -14,7 +29,14 @@ if (isset($_POST["login"])) {
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if ($password === $row["password"] ) {
+           //set session
             $_SESSION["login"] = true;
+            // cek remember me
+            if (isset($_POST["remember"])) {
+                //buat cookie
+                setcookie('id', $row['id'], time() + 60);
+                setcookie('key', hash('sha256', $row['username']), time() + 60);
+            }
             header("Location: donasi.php");
             exit;
         }
