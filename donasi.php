@@ -1,31 +1,32 @@
 <?php
 session_start();
+require 'function.php';
 if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit;
 }
 
-$host       = "localhost";
-$user       = "root";
-$pass       = "";
-$db         = "charity";
+// $host       = "localhost";
+// $user       = "root";
+// $pass       = "";
+// $db         = "charity";
 
-$koneksi    = mysqli_connect($host, $user, $pass, $db);
-if (!$koneksi) { //cek koneksi
-    die("Tidak bisa terkoneksi ke database");
-}
-$nama       = "";
-$telepon   = "";
-$alamat  = "";
-$kota      = "";
-$provinsi      = "";
-$pos       = "";
-$jumlah       = "";
-$metode = "";
-$informasi = "";
-$catatan = "";
-$sukses     = "";
-$error      = "";
+// $koneksi    = mysqli_connect($host, $user, $pass, $db);
+// if (!$koneksi) { //cek koneksi
+//     die("Tidak bisa terkoneksi ke database");
+// }
+// $nama       = "";
+// $telepon   = "";
+// $alamat  = "";
+// $kota      = "";
+// $provinsi      = "";
+// $pos       = "";
+// $jumlah       = "";
+// $metode = "";
+// $informasi = "";
+// $catatan = "";
+// $sukses     = "";
+// $error      = "";
 
 if (isset($_GET['op'])) {
     $op = $_GET['op'];
@@ -61,40 +62,51 @@ if ($op == 'edit') {
         $error = "Data tidak ditemukan";
     }
 }
-if (isset($_POST['simpan'])) { //untuk create
-    $nama       = $_POST['nama'];
-    $telepon   = $_POST['telepon'];
-    $alamat  = $_POST['alamat'];
-    $kota      = $_POST['kota'];
-    $provinsi      = $_POST['provinsi'];
-    $pos       = $_POST['pos'];
-    $jumlah      = $_POST['jumlah'];
-    $metode = $_POST['metode'];
-    $informasi = $_POST['informasi'];
-    $catatan = $_POST['catatan'];
+// if (isset($_POST['simpan'])) { //untuk create
+//     $nama       = $_POST['nama'];
+//     $telepon   = $_POST['telepon'];
+//     $alamat  = $_POST['alamat'];
+//     $kota      = $_POST['kota'];
+//     $provinsi      = $_POST['provinsi'];
+//     $pos       = $_POST['pos'];
+//     $jumlah      = $_POST['jumlah'];
+//     $metode = $_POST['metode'];
+//     $informasi = $_POST['informasi'];
+//     $catatan = $_POST['catatan'];
 
-    if ($nama && $telepon && $alamat && $kota && $provinsi && $pos && $jumlah && $metode) {
-        if ($op == 'edit') { //untuk update
-            $sql1       = "update donasi set nama='$nama',telepon='$telepon',alamat='$alamat',kota ='$kota',provinsi='$provinsi',pos='$pos',jumlah='$jumlah',metode='$metode',informasi='$informasi',catatan='$catatan', where id = '$id'";
-            $q1         = mysqli_query($koneksi, $sql1);
-            if ($q1) {
-                $sukses = "Data berhasil diupdate";
-            } else {
-                $error  = "Data gagal diupdate";
-            }
-        } else { //untuk insert
-            $sql1   = "insert into donasi(nama,telepon,alamat,kota,provinsi,pos,jumlah,metode,informasi,catatan) values ('$nama','$telepon','$alamat','$kota','$provinsi','$pos','$jumlah','$metode','$informasi','$catatan')";
-            $q1     = mysqli_query($koneksi, $sql1);
-            if ($q1) {
-                $sukses     = "Berhasil memasukkan data baru";
-            } else {
-                $error      = "Gagal memasukkan data";
-            }
-        }
+//     if ($nama && $telepon && $alamat && $kota && $provinsi && $pos && $jumlah && $metode) {
+//         if ($op == 'edit') { //untuk update
+//             $sql1       = "update donasi set nama='$nama',telepon='$telepon',alamat='$alamat',kota ='$kota',provinsi='$provinsi',pos='$pos',jumlah='$jumlah',metode='$metode',informasi='$informasi',catatan='$catatan', where id = '$id'";
+//             $q1         = mysqli_query($koneksi, $sql1);
+//             if ($q1) {
+//                 $sukses = "Data berhasil diupdate";
+//             } else {
+//                 $error  = "Data gagal diupdate";
+//             }
+//         } else { //untuk insert
+//             $sql1   = "insert into donasi(nama,telepon,alamat,kota,provinsi,pos,jumlah,metode,informasi,catatan) values ('$nama','$telepon','$alamat','$kota','$provinsi','$pos','$jumlah','$metode','$informasi','$catatan')";
+//             $q1     = mysqli_query($koneksi, $sql1);
+//             if ($q1) {
+//                 $sukses     = "Berhasil memasukkan data baru";
+//             } else {
+//                 $error      = "Gagal memasukkan data";
+//             }
+//         }
+//     } else {
+//         $error = "Silakan masukkan semua data";
+//     }
+// }
+if (isset($_POST["tambah"])) {
+    if (tambah($_POST) > 0) {
+        echo "<script>
+                alert('Data berhasil ditambahkan!');
+                document.location.href = 'index.php';
+              </script>";
     } else {
-        $error = "Silakan masukkan semua data";
+        echo "<script>
+                alert('Data gagal ditambahkan!');
+              </script>";
     }
-    
 }
 ?>
 <!DOCTYPE html>
@@ -229,7 +241,7 @@ main {
                 Donasi Masuk
             </div>
             <div class="card-body">
-                <?php
+                <!-- <?php
                 if ($error) {
                 ?>
                     <div class="alert alert-danger" role="alert">
@@ -238,8 +250,8 @@ main {
                 <?php
                     header("refresh:5;url=index.php");//5 : detik
                 }
-                ?>
-                <?php
+                ?> -->
+                <!-- <?php
                 if ($sukses) {
                 ?>
                     <div class="alert alert-success" role="alert">
@@ -248,8 +260,8 @@ main {
                 <?php
                     header("refresh:5;url=index.php");
                 }
-                ?>
-                <form action="" method="POST">
+                ?> -->
+                <!-- <form action="" method="POST">
                     <div class="mb-3 row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama Donatur</label>
                         <div class="col-sm-10">
@@ -316,12 +328,69 @@ main {
                             <input type="text" class="form-control" id="catatan" name="catatan" value="<?php echo $catatan ?>">
                         </div>
                     </div>
+                    <button type="submit" name="tambah" class="btn btn-primary">Tambah Data</button>
                 </form>
             </div>
+        </div> -->
+        <div class="container">
+            <h1 class="my-4 text-center">Donasi</h1>
+            <form action="" method="post">
+               <ul>
+                    <li>
+                        <label for="nama">Nama</label>
+                        <input type="text" name="nama" id="nama" required>
+                    </li>
+                    <li>
+                        <label for="telepon">Telepon</label>
+                        <input type="text" name="telepon" id="telepon" required>
+                    </li>
+                    <li>
+                        <label for="alamat">Alamat</label>
+                        <input type="text" name="alamat" id="alamat" required>
+                    </li>
+                    <li>
+                        <label for="kota">Kota</label>
+                        <input type="text" name="kota" id="kota" required>
+                    </li>
+                    <li>
+                        <label for="provinsi">Provinsi</label>
+                        <input type="text" name="provinsi" id="provinsi" required>
+                    </li>
+                    <li>
+                        <label for="pos">Kode Pos</label>
+                        <input type="text" name="pos" id="pos" required>
+                    </li>
+                    <li>
+                        <label for="jumlah">Jumlah</label>
+                        <input type="text" name="jumlah" id="jumlah" required>
+                    </li>
+                    <li>
+                        <label for="metode">Metode Pembayaran</label>
+                        <select name="metode" id="metode" required>
+                            <option value="">- Pilih Metode Pembayaran -</option>
+                            <option value="transferbank">Transfer Bank</option>
+                            <option value="kartukredit">Kartu Kredit/Debit</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="dompetdigital">Dompet Digital</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="informasi">Informasi</label>
+                        <input type="text" name="informasi" id="informasi" required>
+                    </li>
+                    <li>
+                        <label for="catatan">Catatan</label>
+                        <input type="text" name="catatan" id="catatan" required>
+                    </li>
+                    <li>
+                        <button type="submit" name="tambah">Tambah Data</button>
+                    </li>
+               </ul>
+            </form>
         </div>
 
         <!-- untuk mengeluarkan data -->
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header text-white bg-secondary">
                 Data Pemessanan
             </div>
@@ -380,7 +449,7 @@ main {
                     
                 </table>
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 

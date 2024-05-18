@@ -10,7 +10,26 @@ function query($query) {
     }
     return $rows;
 }
+function tambah ($data){
+    global $conn;
+    $nama = htmlspecialchars($data["nama"]);
+    $telepon = htmlspecialchars($data["telepon"]);
+    $alamat = htmlspecialchars($data["alamat"]);
+    $kota = htmlspecialchars($data["kota"]);
+    $provinsi = htmlspecialchars($data["provinsi"]);
+    $pos = htmlspecialchars($data["pos"]);
+    $jumlah = htmlspecialchars($data["jumlah"]);
+    $metode = htmlspecialchars($data["metode"]);
+    $informasi = htmlspecialchars($data["informasi"]);
+    $catatan = htmlspecialchars($data["catatan"]);
 
+    $query = "INSERT INTO donasi
+                VALUES
+                ('', '$nama', '$telepon', '$alamat', '$kota', '$provinsi', '$pos', '$jumlah', '$metode', '$informasi', '$catatan')
+                ";
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
 
 function registrasi ($data){
     global $conn;
