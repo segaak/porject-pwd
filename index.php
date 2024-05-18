@@ -270,7 +270,7 @@
             <ul class="menu">
                 <li><a href="index.php">Beranda</a></li>
                 <li><a href="aboutus.php">About Us</a></li>
-                <li><a href="donasi.php">Donasi</a></li>
+                <li><a href="login.php">Donasi</a></li>
                 <li><a href="contact.php">CP</a></li>
             </ul>
         </div>

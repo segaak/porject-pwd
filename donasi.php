@@ -1,5 +1,10 @@
-
 <?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
+
 $host       = "localhost";
 $user       = "root";
 $pass       = "";
@@ -89,6 +94,7 @@ if (isset($_POST['simpan'])) { //untuk create
     } else {
         $error = "Silakan masukkan semua data";
     }
+    
 }
 ?>
 <!DOCTYPE html>
@@ -215,6 +221,7 @@ main {
             </ul>
         </div>
     </nav>
+    <a href="logout.php">logout</a>
     <div class="mx-auto">
         <!-- untuk memasukkan data -->
         <div class="card">
