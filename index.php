@@ -130,74 +130,7 @@
       font-size: 1.5rem;
       margin: 0.5rem 0;
     } */
-/* 
-    .paket {
-      margin-bottom: 2rem;
-      text-align: center;
-    }
 
-    .paket h2 {
-      font-size: 24px;
-      margin-bottom: 1rem;
-    }
-
-    .paket-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .paket-item {
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-      flex: 1;
-      width: calc(33.33% - 1rem);
-      margin-bottom: 1rem;
-      margin-right: 20px;
-      margin-left: 20px;
-      padding: 1rem;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .paket-item:hover {
-      transform: scale(1.1);
-    }
-
-    .paket-item img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-
-    .paket-item h3 {
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
-    }
-
-    .paket-item p {
-      font-size: 0.8rem;
-      margin: 0.5rem 0;
-    }
-
-    .pesan {
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .card-body {
-
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-      flex: 1;
-      width: 96.5%;
-      margin-bottom: 1rem;
-      margin-right: 20px;
-      margin-left: 20px;
-      padding: 1rem;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }  */
     main {
       max-width: 1200px;
       margin: 2rem auto;
@@ -276,30 +209,7 @@
         </div>
     </nav>
   
-<!-- 
- 
-    <selection class="destinasi"> -->
-      <!-- <h2>Destinasi Wisata</h2>
-      <div class="destinasi-item">
-        <img src="sleman.jpeg" alt="Destinasi 1">
-        <h3>Sleman</h3>
-      </div>
-      <div class="destinasi-item">
-        <img src="jogja.jpeg" alt="Destinasi 1">
-        <h3>Yogyakarta</h3>
-      </div>
-      <div class="destinasi-item">
-        <img src="kulonprogo.jpeg" alt="Destinasi 1">
-        <h3>Kulon Progo</h3>
-      </div>
-      <div class="destinasi-item">
-        <img src="bantul.jpeg" alt="Destinasi 1">
-        <h3>Bantul</h3>
-      </div>
-      <div class="destinasi-item">
-        <img src="gunungkidul.jpeg" alt="Destinasi 1">
-        <h3>Gunung Kidul</h3>
-      </div> -->
+
       <main>
       <selection class="paket-wisata">
             <h2>Konten</h2>
@@ -326,57 +236,7 @@
             </div>
         </selection>
         </main>
-<!-- 
-      <section class="hero" id="home">
-    <h1 class="text-center" style="margin-top: 30px; margin-bottom: 50px;">paket</h1>
-    
-    <div class="row justify-content-center" id="card-grid">
-      <div class="card text-bg-light mb-3 mx-3 shadow-lg" style="max-width: 17rem;">
-        <div class="card-header">
-          <h5 class="card-title text-center">Pembahasan</h5>
-         
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-          aaa
-          </p>
-          <div class="text-center">
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="card text-bg-light mb-3 mx-3 shadow-lg" style="max-width: 17rem;">
-        <div class="card-header">
-          <h5 class="card-title text-center">Pembangunan</h5>
-         
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            oi
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card text-bg-light mb-3 mx-3 shadow-lg" style="max-width: 17rem;">
-        <div class="card-header">
-          <h5 class="card-title text-center">Pemeliharaan</h5>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            aaa
-          </p>
-          <a href="#" class="btn btn-primary" >Go somewhere</a>
-        </div>
-  </div>
-     
-      
-      </div>
-    </div>
-  </section> -->
-        
 
-    <!-- </selection>
-  </main> -->
 </body>
 
 </html>
