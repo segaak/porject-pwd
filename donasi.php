@@ -62,40 +62,7 @@ if ($op == 'edit') {
         $error = "Data tidak ditemukan";
     }
 }
-// if (isset($_POST['simpan'])) { //untuk create
-//     $nama       = $_POST['nama'];
-//     $telepon   = $_POST['telepon'];
-//     $alamat  = $_POST['alamat'];
-//     $kota      = $_POST['kota'];
-//     $provinsi      = $_POST['provinsi'];
-//     $pos       = $_POST['pos'];
-//     $jumlah      = $_POST['jumlah'];
-//     $metode = $_POST['metode'];
-//     $informasi = $_POST['informasi'];
-//     $catatan = $_POST['catatan'];
 
-//     if ($nama && $telepon && $alamat && $kota && $provinsi && $pos && $jumlah && $metode) {
-//         if ($op == 'edit') { //untuk update
-//             $sql1       = "update donasi set nama='$nama',telepon='$telepon',alamat='$alamat',kota ='$kota',provinsi='$provinsi',pos='$pos',jumlah='$jumlah',metode='$metode',informasi='$informasi',catatan='$catatan', where id = '$id'";
-//             $q1         = mysqli_query($koneksi, $sql1);
-//             if ($q1) {
-//                 $sukses = "Data berhasil diupdate";
-//             } else {
-//                 $error  = "Data gagal diupdate";
-//             }
-//         } else { //untuk insert
-//             $sql1   = "insert into donasi(nama,telepon,alamat,kota,provinsi,pos,jumlah,metode,informasi,catatan) values ('$nama','$telepon','$alamat','$kota','$provinsi','$pos','$jumlah','$metode','$informasi','$catatan')";
-//             $q1     = mysqli_query($koneksi, $sql1);
-//             if ($q1) {
-//                 $sukses     = "Berhasil memasukkan data baru";
-//             } else {
-//                 $error      = "Gagal memasukkan data";
-//             }
-//         }
-//     } else {
-//         $error = "Silakan masukkan semua data";
-//     }
-// }
 if (isset($_POST["tambah"])) {
     if (tambah($_POST) > 0) {
         echo "<script>
