@@ -1,242 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vatika Yayasan</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-
-    header {
-      background: url(border.jpeg) center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 4rem 0;
-      position: relative;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: rgba(0, 0, 0, .5);
-    }
-
-    header h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-
-    nav {
-  background-color:deepskyblue;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: url(tampilan.jpg) top no-repeat;
+  background-color: #101820;
+  background-size: 100%;
 }
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 3rem;
   max-width: 1200px;
-  margin: 0 auto;
-} 
-     .logo a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .menu {
-      list-style-type: none;
-      display: flex;
-    }
-
-    .menu li {
-      margin: 0 1rem;
-    }
-
-    .menu li a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    .menu li a:hover {
-      color: #ffcc00;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-    } 
-
-    .destinasi {
-      margin-bottom: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      text-align: center;
-    }
-
-    .destinasi h2 {
-      font-size: 24px;
-      margin-bottom: 1rem;
-      width: 100%;
-    }
-
-    .destinasi-item {
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-      margin: 0.5rem;
-      max-width: 300px;
-      margin-right: 5px;
-      margin-left: 5px;
-      padding: 1rem;
-      border-radius: 5px;
-      flex: 1;
-      text-align: center;
-    }
-
-    .destinasi-item:hover {
-      transform: scale(1.1);
-    }
-
-    .destinasi-item img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-
-    .destinasi-item h3 {
-      font-size: 1.5rem;
-      margin: 0.5rem 0;
-    } */
-
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-    } 
-    .paket-wisata{
-  margin-bottom: 2rem;
-  text-align: center;
+  margin: 0 auto;   
 }
-.paket-wisata h2{
-  font-size: 24px;
-  margin-bottom: 1rem;
+.navbar a {
+    font-size: 25px;
 }
-.paket-wisata-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.logo a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 35px;
+  font-weight: bold;
 }
-.paket-wisata-item {
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-  flex: 1;
-  width: calc(33.33% - 1rem);
-  margin-bottom: 1rem;
+.judul h1 {
+  color: white;
+  font-size: 50px;
+  margin-top: 4rem;
   margin-right: 20px;
   margin-left: 20px;
-  padding: 1rem;
   text-align: center;
-  transition: transform 0.3s ease;
 }
-.paket-wisata-item:hover {
-  transform: scale(1.1);
+.judul p {
+  color: white;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
 }
-.paket-wisata-item img {
-  max-width: 100%;
-  height: auto;
+.login {
+  position: absolute;
+  top: 5%;
+  left: 86%;
+  padding: 10px 20px;
+  background-color: #212121;
+  color: white;
+  border: none; 
+  text-decoration: none;
+  border-radius: 10px;
+}
+.button {
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+}
+.btn-primary {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 43%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #191919;
+  color: white;
+  border: none; 
+  text-decoration: none;
   border-radius: 5px;
 }
-.paket-wisata-item h3{
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
+.btn-secondary {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 57%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #212121;
+  color: white;
+  border: none; 
+  text-decoration: none;
+  border-radius: 5px;
 }
-.paket-wisata-item p{
-  font-size: 0.8rem;
-  margin: 0.5rem 0;
+.desc1 {
+  color: white;
+  font-size: 35px;
+  margin-top: 24rem;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+}
+.header1 {
+  background-color: #2B7BFF;
+  padding: 2rem;
+  position: relative;
+  margin-left: 15.6rem;
+  margin-right: 13rem;
+  border-radius: 15px;
+  margin-top: 2rem;
+  width: 850px;
+  height: 160px;
+}
+.header1 h1 {
+  color: white;
+  font-size: 32px;
   text-align: justify;
 }
-
-    .bg-body-tertiary {
-  background-color:  deepskyblue !important; /* Ini akan menimpa gaya inline */
+.header1 p {
+  color: white;
+  font-size: 18px;
+  text-align: justify;
 }
-   
-    
+.header2 {
+  background-color: #fe5dd7;
+  padding: 1.2rem;
+  position: relative;
+  margin-left: 15.6rem;
+  margin-right: 13rem;
+  border-radius: 15px;
+  margin-top: 1rem;
+  width: 850px;
+  height: 160px;
+}
+.header2 h1 {
+  color: white;
+  font-size: 32px;
+  text-align: justify;
+  margin-left: 500px;
+}
+.header2 p {
+  color: white;
+  font-size: 18px;
+  text-align: justify;
+  margin-left: 500px;
+}
+.penutup h1 {
+  color: white;
+  font-size: 33px;
+  margin-top: 2rem;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+}
+.penutup p {
+  color: white;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+}
+.daftar {
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+}
+.btn-tersier {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #2B7BFF;
+  color: white;
+  border: none; 
+  text-decoration: none;
+  border-radius: 5px;
+}
+.batas {
+  background-color: #101820;
+  padding: 2rem;
+  position: relative;
+  margin-left: 15.6rem;
+  margin-right: 13rem;
+  border-radius: 15px;
+  margin-top: 5rem;
+  width: 850px;
+  height: 160px;
+}
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Vatika Yayasan</h1>
-
-  </header>
   <nav>
-        <div class="navbar">
-            <div class="logo">
-                <img src="" alt="a" srcset="">
-                <a href="index.php">Vatika Yayasan</a>
-            </div>
-            <ul class="menu">
-                <li><a href="index.php">Beranda</a></li>
-                <li><a href="aboutus.php">About Us</a></li>
-                <li><a href="login.php">Donasi</a></li>
-                <li><a href="contact.php">CP</a></li>
-            </ul>
-        </div>
-    </nav>
-  
-
-      <main>
-      <selection class="paket-wisata">
-            <h2>Konten</h2>
-            <div class="paket-wisata-container">
-                
-                <div class="paket-wisata-item">
-                    <img src="2.jpeg" alt="Paket Wisata 2">
-                    <h3>Pembahasan</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab consequatur ipsam aspernatur consequuntur libero quaerat modi molestiae temporibus tempore sequi. Voluptatibus aliquid excepturi amet alias expedita sapiente doloremque consequuntur eum!</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="paket-wisata-item">
-                    <img src="8.jpeg" alt="Paket Wisata 4">
-                    <h3>Pembangunan</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, iste consequuntur ut aut assumenda repudiandae fugiat laborum nam voluptas facilis veniam ullam soluta excepturi consequatur reiciendis, blanditiis accusantium distinctio eos.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
-                    <h3>Pemeliharaan</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </selection>
-        </main>
-
+    <div class="navbar">
+      <div class="logo">
+        <a>Vatika Yayasan</a>
+      </div>
+      <div class="login">
+      <a href="login.php" class="btn btn-secondary disabled" tabindex="-1" role="button" aria-disabled="true">Login</a>
+      </div>
+    </div>
+  </nav>
+  <div class="judul">
+    <h1>Tangan Yang Memberi, Hati Yang Terpenuhi</h1>
+    <p>Punya penghasilan lebih dan bingung ingin dikemanakan?</p>
+    <p>Langsung aja donasi ke Vatika Yayasan sekarang!</p>
+  </div>
+  <div class="button">
+    <a href="beranda.php" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">Donasikan Uangmu Sekarang!</a>
+    <a href="registrasi.php" class="btn btn-secondary disabled" tabindex="-1" role="button" aria-disabled="true">Buat Akun</a>
+  </div>
+  <div class="desc1">
+    <p>Lu punya Duit, lu bisa sedekah. Yuk kita cari pahala</p>
+    <p>dengan uangmu dan bantu anak-anak yayasan disana</P>
+  </div>
+  <header class="header1">
+    <h1>APA ITU VATIKA YAYASAN?</h1>
+    <p>Vatika Yayasan adalah platform penghubung antara donatur</p>
+    <p>dan yayasan yang memungkinkan donatur untuk melakukan</p>
+    <p>donasi agar menjadi lebih efektif dan efisien.</p>
+  </header>
+  <header class="header2">
+    <h1>CARA KERJANYA</h1>
+    <p>1. Daftarkan dan verifikasi akunmu</p>
+    <p>2. Pilih tujuan donasimu</p>
+    <p>3. Isi seluruh data</p>
+    <p>4. Submit data yang kamu isi</p>
+  </header>
+  <div class="penutup">
+    <h1>SIAPA YANG CITA-CITANYA MENJADI ORANG BAIK?</h1>
+    <p>Yuk daftar dan berdonasi untuk anak-anak yayasan</p>
+  </div>
+  <div class="daftar">
+    <a href="registrasi.php" class="btn btn-tersier disabled" tabindex="-1" role="button" aria-disabled="true">Buat Akun</a>
+  </div>
+  <header class="batas">
+  </header>
 </body>
-
 </html>
