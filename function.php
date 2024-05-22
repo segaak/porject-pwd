@@ -20,12 +20,12 @@ function tambah ($data){
     $pos = htmlspecialchars($data["pos"]);
     $jumlah = htmlspecialchars($data["jumlah"]);
     $metode = htmlspecialchars($data["metode"]);
-    $informasi = htmlspecialchars($data["informasi"]);
+    $tujuan = htmlspecialchars($data["tujuan"]);
     $catatan = htmlspecialchars($data["catatan"]);
 
     $query = "INSERT INTO donasi
                 VALUES
-                ('', '$nama', '$telepon', '$alamat', '$kota', '$provinsi', '$pos', '$jumlah', '$metode', '$informasi', '$catatan')
+                ('', '$nama', '$telepon', '$alamat', '$kota', '$provinsi', '$pos', '$jumlah', '$metode', '$tujuan', '$catatan')
                 ";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);

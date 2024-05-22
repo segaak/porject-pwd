@@ -1,5 +1,17 @@
 <?php
 require 'function.php';
+if (isset($_POST["tambah"])) {
+    if (tambah($_POST) > 0) {
+        echo "<script>
+                alert('Data berhasil ditambahkan!');
+                document.location.href = 'parkiran.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Data gagal ditambahkan!');
+              </script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +36,7 @@ require 'function.php';
 
         header.atas {
             box-shadow: 0 0 8px darkslategray;
-            background: url(navbar.jpg) center/cover no-repeat;
+            background: url(perpustakaan.jpeg) center/cover no-repeat;
             padding: 12rem;
             position: relative;
             margin-left: 13rem;
@@ -35,12 +47,14 @@ require 'function.php';
         header.bawah {
             box-shadow: 0 0 8px darkslategray;
             background-color: #101820;
-            padding: 4rem;
+            padding: 1rem;
             position: relative;
             margin-left: 13rem;
             margin-right: 13rem;
             border-radius: 10px;
             margin-top: 20px;
+            color: white;
+            font-size: 20px;
         }
 
         .navbar {
@@ -169,17 +183,26 @@ require 'function.php';
     <nav>
         <div class="navbar">
             <div class="logo">
-                <a href="index.php">Vatika Yayasan</a>
+                <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
-                <li><a href="index.php">Login</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </div>
     </nav>
     <header class="atas">
     </header>
     <header class="bawah">
-        <h1>Vatika Yayasan</h1>
+        <p>Charity untuk Perpustakaan Yayasan bertujuan untuk memperluas akses terhadap literasi dan pengetahuan di kalangan komunitas yang dilayani oleh yayasan amal. Melalui program ini, donasi uang, buku, peralatan perpustakaan, dan bantuan sukarelawan diterima untuk mendukung pembangunan dan pengembangan perpustakaan yayasan.</p>
+        <p>Tujuan utamanya adalah:</p>
+        <ul>
+            <li>Meningkatkan Literasi: Memberikan akses terhadap bahan bacaan yang berkualitas untuk meningkatkan kemampuan membaca dan menulis di kalangan anggota komunitas.</li>
+            <li>Pendidikan yang Berkualitas: Mendukung pendidikan yang bermutu dengan menyediakan sumber daya pendidikan yang relevan dan bermanfaat.</li>
+            <li>Pengembangan Pengetahuan: Memperluas pengetahuan anggota komunitas melalui koleksi buku dan sumber daya lainnya yang tersedia di perpustakaan.</li>
+            <li>Pertumbuhan Pribadi: Memberikan sumber daya yang diperlukan untuk pertumbuhan intelektual dan pribadi anggota komunitas.</li>
+            <li>Pemberdayaan Masyarakat: Menggunakan perpustakaan sebagai pusat pembelajaran dan pertukaran ide untuk memajukan kesejahteraan sosial komunitas yang dilayani oleh yayasan.</li>
+        </ul>
+        <p>Dengan menyediakan akses yang lebih luas terhadap bahan bacaan dan sumber daya pendidikan, Charity untuk Perpustakaan Yayasan berperan dalam memajukan kesejahteraan intelektual dan sosial komunitas yang dilayani oleh yayasan tersebut.</p>
     </header>
     <div class="text-center" style="text-decoration: none;">
 
@@ -247,9 +270,9 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="informasi" class="col-sm-2 col-form-label text-start form-label">Informasi</label>
+                    <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="informasi" name="informasi" required>
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="Perpustakaan" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -259,7 +282,7 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
                 </div>
             </form>
         </div>

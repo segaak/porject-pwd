@@ -119,18 +119,20 @@ main {
   transform: scale(1.1);
 }
 .paket-wisata-item img {
-  max-width: 100%;
-  height: auto;
+  width: 330px;
+  height: 200px;
   border-radius: 5px;
 }
 .paket-wisata-item h3{
   font-size: 1.2rem;
   margin: 0.5rem 0;
+  color: white;
 }
 .paket-wisata-item p{
   font-size: 0.8rem;
   margin: 0.5rem 0;
   text-align: justify;
+  color: white;
 }
     </style>
 </head>
@@ -161,44 +163,44 @@ main {
       <selection class="paket-wisata">
             <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
-                    <img src="2.jpeg" alt="Paket Wisata 2">
+                    <img src="parkiran.jpg" alt="Paket Wisata 2">
                     <h3>Parkiran</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab consequatur ipsam aspernatur consequuntur libero quaerat modi molestiae temporibus tempore sequi. Voluptatibus aliquid excepturi amet alias expedita sapiente doloremque consequuntur eum!</p>
-                    <a href="parkiran.php" class="btn btn-primary">Go somewhere</a>
+                    <p>Charity untuk Parkiran Yayasan adalah inisiatif yang menyediakan fasilitas parkir aman dan nyaman bagi yayasan amal. Dengan menerima donasi dan sumbangan material, program ini meningkatkan aksesibilitas, keamanan kendaraan, dan mendukung operasional yayasan, sehingga memperluas dampak sosialnya.</p>
+                    <a href="parkiran.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
-                    <img src="8.jpeg" alt="Paket Wisata 4">
+                    <img src="navbar.jpg" alt="Paket Wisata 4">
                     <h3>Taman</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, iste consequuntur ut aut assumenda repudiandae fugiat laborum nam voluptas facilis veniam ullam soluta excepturi consequatur reiciendis, blanditiis accusantium distinctio eos.</p>
-                    <a href="taman.php" class="btn btn-primary">Go somewhere</a>
+                    <p>Charity untuk Taman Yayasan adalah inisiatif yang menciptakan dan merawat taman di yayasan amal. Program ini menerima donasi uang, tanaman, dan material taman, serta sukarelawan untuk membantu penanaman dan pemeliharaan, menyediakan ruang hijau sehat dan tempat rekreasi bagi komunitas yayasan.</p>
+                    <a href="taman.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
+                    <img src="dapur.jpg" alt="Paket Wisata 5">
                     <h3>Dapur</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="dapur.php" class="btn btn-primary">Go somewhere</a>
+                    <p>Charity untuk Dapur Yayasan mendukung pembangunan dan perawatan dapur di yayasan amal melalui donasi uang, peralatan dapur, bahan makanan, dan bantuan sukarelawan. Tujuannya adalah menyediakan makanan sehat bagi penerima manfaat, meningkatkan kesejahteraan mereka, dan mendukung operasional yayasan dalam melayani komunitas.</p>
+                    <a href="dapur.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 </div>
             </selection>
             <selection class="paket-wisata">
               <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
+                    <img src="perpustakaan.jpeg" alt="Paket Wisata 5">
                     <h3>Perpustakaan</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="perpustakaan.php" class="btn btn-primary">Go somewhere</a>
+                    <p>Charity untuk Perpustakaan Yayasan mendukung akses literasi dan pengetahuan dengan menerima donasi uang, buku, peralatan perpustakaan, dan bantuan sukarelawan. Tujuannya adalah meningkatkan literasi, pendidikan, dan pengetahuan anggota komunitas yang dilayani oleh yayasan, serta memberikan sumber daya yang diperlukan untuk pertumbuhan intelektual dan pribadi mereka.</p>
+                    <a href="perpustakaan.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
+                    <img src="fasilitas.jpg" alt="Paket Wisata 5">
                     <h3>Fasilitas</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="fasilitas.php" class="btn btn-primary">Go somewhere</a>
+                    <p>Charity untuk Fasilitas Yayasan adalah inisiatif untuk meningkatkan infrastruktur dan fasilitas yayasan amal melalui donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperbaiki layanan, meningkatkan keselamatan, memudahkan akses, mengembangkan kapasitas yayasan, dan mendorong keterlibatan komunitas dalam pembangunan dan pemeliharaan fasilitas.</p>
+                    <a href="fasilitas.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
                     <img src="15.jpeg" alt="Paket Wisata 5">
                     <h3>Lantai Dasar</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="lantaidasar.php" class="btn btn-primary">Go somewhere</a>
+                    <a href="lantaidasar.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 </div>
             </selection>
@@ -208,19 +210,19 @@ main {
                     <img src="15.jpeg" alt="Paket Wisata 5">
                     <h3>Asrama 1</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="asrama1.php" class="btn btn-primary">Go somewhere</a>
+                    <a href="asrama1.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
                     <img src="15.jpeg" alt="Paket Wisata 5">
                     <h3>Asrama 2</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="asrama2.php" class="btn btn-primary">Go somewhere</a>
+                    <a href="asrama2.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
                     <img src="15.jpeg" alt="Paket Wisata 5">
                     <h3>Asrama 3</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
-                    <a href="asrama3.php" class="btn btn-primary">Go somewhere</a>
+                    <a href="asrama3.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
             </div>
         </selection>

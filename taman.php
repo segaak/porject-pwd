@@ -1,5 +1,17 @@
 <?php
 require 'function.php';
+if (isset($_POST["tambah"])) {
+    if (tambah($_POST) > 0) {
+        echo "<script>
+                alert('Data berhasil ditambahkan!');
+                document.location.href = 'parkiran.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Data gagal ditambahkan!');
+              </script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +47,14 @@ require 'function.php';
         header.bawah {
             box-shadow: 0 0 8px darkslategray;
             background-color: #101820;
-            padding: 4rem;
+            padding: 1rem;
             position: relative;
             margin-left: 13rem;
             margin-right: 13rem;
             border-radius: 10px;
             margin-top: 20px;
+            color: white;
+            font-size: 20px;
         }
 
         .navbar {
@@ -169,17 +183,24 @@ require 'function.php';
     <nav>
         <div class="navbar">
             <div class="logo">
-                <a href="index.php">Vatika Yayasan</a>
+                <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
-                <li><a href="index.php">Login</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </div>
     </nav>
     <header class="atas">
     </header>
     <header class="bawah">
-        <h1>Vatika Yayasan</h1>
+        <p>Charity untuk Taman Yayasan adalah inisiatif yang bertujuan untuk menciptakan dan merawat taman-taman di area yayasan amal. Program ini menerima donasi berupa uang, tanaman, dan material taman, serta sukarelawan untuk membantu dalam perencanaan, penanaman, dan pemeliharaan taman.</p>
+        <p>Manfaat program ini meliputi:</p>
+        <ul>
+            <li>Lingkungan Sehat: Menyediakan ruang hijau yang bersih dan sehat bagi komunitas yayasan.</li>
+            <li>Tempat Rekreasi: Menyediakan area rekreasi yang nyaman bagi penerima manfaat yayasan dan pengunjung.</li>
+            <li>Pendidikan Lingkungan: Mendorong kesadaran dan edukasi tentang pentingnya menjaga lingkungan.</li>
+        </ul>
+        <p>Dengan dukungan dari berbagai pihak, Charity untuk Taman Yayasan membantu yayasan menciptakan lingkungan yang lebih asri dan mendukung kesehatan serta kesejahteraan komunitas mereka.</p>
     </header>
     <div class="text-center" style="text-decoration: none;">
 
@@ -247,9 +268,9 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="informasi" class="col-sm-2 col-form-label text-start form-label">Informasi</label>
+                    <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="informasi" name="informasi" required>
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="Taman" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -259,7 +280,7 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
                 </div>
             </form>
         </div>

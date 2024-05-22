@@ -15,6 +15,7 @@ body {
   background: url(tampilan.jpg) top no-repeat;
   background-color: #101820;
   background-size: 100%;
+  background: linear-gradient(0deg,rgba(1,1,,3,1)3%, rgba);
 }
 .navbar {
   display: flex;
@@ -36,7 +37,7 @@ body {
 .judul h1 {
   color: white;
   font-size: 50px;
-  margin-top: 4rem;
+  margin-top: 10rem;
   margin-right: 20px;
   margin-left: 20px;
   text-align: center;
@@ -103,7 +104,7 @@ body {
   background-color: #2B7BFF;
   padding: 2rem;
   position: relative;
-  margin-left: 15.6rem;
+  margin-left: 23rem;
   margin-right: 13rem;
   border-radius: 15px;
   margin-top: 2rem;
@@ -124,7 +125,7 @@ body {
   background-color: #fe5dd7;
   padding: 1.2rem;
   position: relative;
-  margin-left: 15.6rem;
+  margin-left: 23rem;
   margin-right: 13rem;
   border-radius: 15px;
   margin-top: 1rem;

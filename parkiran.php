@@ -1,5 +1,17 @@
 <?php
 require 'function.php';
+if (isset($_POST["tambah"])) {
+    if (tambah($_POST) > 0) {
+        echo "<script>
+                alert('Data berhasil ditambahkan!');
+                document.location.href = 'parkiran.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Data gagal ditambahkan!');
+              </script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +36,7 @@ require 'function.php';
 
         header.atas {
             box-shadow: 0 0 8px darkslategray;
-            background: url(navbar.jpg) center/cover no-repeat;
+            background: url(parkiran.jpg) center/cover no-repeat;
             padding: 12rem;
             position: relative;
             margin-left: 13rem;
@@ -35,12 +47,14 @@ require 'function.php';
         header.bawah {
             box-shadow: 0 0 8px darkslategray;
             background-color: #101820;
-            padding: 4rem;
+            padding: 1rem;
             position: relative;
             margin-left: 13rem;
             margin-right: 13rem;
             border-radius: 10px;
             margin-top: 20px;
+            color: white;
+            font-size: 20px;
         }
 
         .navbar {
@@ -169,17 +183,24 @@ require 'function.php';
     <nav>
         <div class="navbar">
             <div class="logo">
-                <a href="index.php">Vatika Yayasan</a>
+                <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
-                <li><a href="index.php">Login</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </div>
     </nav>
     <header class="atas">
     </header>
     <header class="bawah">
-        <h1>Vatika Yayasan</h1>
+        <p>Charity untuk Parkiran Yayasan adalah inisiatif sosial yang bertujuan menyediakan fasilitas parkir yang aman dan nyaman bagi yayasan-yayasan amal. Program ini menerima kontribusi dalam bentuk donasi finansial, sumbangan material, dan tenaga atau keahlian untuk pembangunan dan renovasi area parkir.</p>
+        <p>Manfaat program ini meliputi:</p>
+        <ul>
+            <li>Peningkatan Aksesibilitas: Memudahkan akses bagi donatur, sukarelawan, dan peserta kegiatan yayasan.</li>
+            <li>Keamanan Kendaraan: Mengurangi risiko pencurian dan kerusakan kendaraan.</li>
+            <li>Dukungan Operasional Yayasan: Membantu yayasan fokus pada kegiatan inti tanpa khawatir tentang logistik parkir.</li>
+        </ul>
+        <p>Dengan kontribusi dari berbagai pihak, Charity untuk Parkiran Yayasan membantu yayasan menyelenggarakan lebih banyak acara dan menjangkau lebih banyak orang, meningkatkan dampak sosial yang diberikan kepada masyarakat.</p>
     </header>
     <div class="text-center" style="text-decoration: none;">
 
@@ -247,9 +268,9 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="informasi" class="col-sm-2 col-form-label text-start form-label">Informasi</label>
+                    <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="informasi" name="informasi" required>
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="Parkiran" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -259,7 +280,7 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
                 </div>
             </form>
         </div>
