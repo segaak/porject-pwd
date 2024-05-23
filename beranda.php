@@ -107,7 +107,8 @@ main {
 .paket-wisata-item {
   box-shadow: 0 0 8px darkslategray;
   flex: 1;
-  width: calc(33.33% - 1rem);
+  width: 100px;
+  height: 500px;
   margin-bottom: 1rem;
   margin-right: 20px;
   margin-left: 20px;
@@ -143,7 +144,12 @@ main {
                 <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
+              <?php session_start();
+                if(isset($_SESSION['login']) && $_SESSION['login'] == true): ?>
+                <li><a href="logout.php">Logout</a></li>
+              <?php else: ?>
                 <li><a href="login.php">Login</a></li>
+              <?php endif; ?>
             </ul>
         </div>
     </nav>
@@ -159,9 +165,7 @@ main {
             </ul>
         </div>
     </nav>
-    
     <main>
-
       <selection class="paket-wisata">
             <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
@@ -184,7 +188,6 @@ main {
                 </div>
                 </div>
             </selection>
-
             <selection class="paket-wisata">
               <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
@@ -200,37 +203,35 @@ main {
                     <a href="fasilitas.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
+                    <img src="gudang.jpg" alt="Paket Wisata 5">
                     <h3>Lantai Dasar</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
+                    <p>Charity untuk lantai dasar yayasan bertujuan memperkuat fondasi fisik dan operasional lembaga, meningkatkan fasilitas, dan menyediakan aksesibilitas yang lebih baik. Dukungan ini menciptakan lingkungan yang nyaman, meningkatkan kepercayaan donatur, dan memfasilitasi kegiatan sosial serta edukatif. Dengan memastikan keberlanjutan yayasan dan mendorong partisipasi masyarakat, inisiatif ini menjadi investasi jangka panjang bagi kesejahteraan komunitas.</p>
                     <a href="lantaidasar.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 </div>
             </selection>
-            
             <selection class="paket-wisata">
               <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
+                    <img src="gudang.jpg" alt="Paket Wisata 5">
                     <h3>Asrama 1</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
+                    <p>Charity untuk asrama yayasan menyediakan tempat tinggal aman dan nyaman bagi yang membutuhkan, dengan donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperluas kapasitas asrama, meningkatkan kualitas hidup penghuni, dan memberikan lingkungan yang mendukung pertumbuhan pribadi. Ini memberikan harapan dan kesempatan untuk memulai kembali dengan lebih baik.</p>
                     <a href="asrama1.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
+                    <img src="gudang.jpg" alt="Paket Wisata 5">
                     <h3>Asrama 2</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
+                    <p>Charity untuk asrama yayasan menyediakan tempat tinggal aman dan nyaman bagi yang membutuhkan, dengan donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperluas kapasitas asrama, meningkatkan kualitas hidup penghuni, dan memberikan lingkungan yang mendukung pertumbuhan pribadi. Ini memberikan harapan dan kesempatan untuk memulai kembali dengan lebih baik.</p>
                     <a href="asrama2.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
                 <div class="paket-wisata-item">
-                    <img src="15.jpeg" alt="Paket Wisata 5">
+                    <img src="gudang.jpg" alt="Paket Wisata 5">
                     <h3>Asrama 3</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum eveniet eos impedit. Natus neque, velit est eaque commodi saepe iure odit ea cupiditate! Labore nam alias obcaecati minima assumenda?</p>
+                    <p>Charity untuk asrama yayasan menyediakan tempat tinggal aman dan nyaman bagi yang membutuhkan, dengan donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperluas kapasitas asrama, meningkatkan kualitas hidup penghuni, dan memberikan lingkungan yang mendukung pertumbuhan pribadi. Ini memberikan harapan dan kesempatan untuk memulai kembali dengan lebih baik.</p>
                     <a href="asrama3.php" class="btn btn-primary">Donasi Sekarang</a>
                 </div>
             </div>
         </selection>
-
         </main>
 </body>
 </html>
