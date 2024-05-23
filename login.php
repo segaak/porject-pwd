@@ -7,7 +7,7 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
     $key = $_COOKIE['key'];
 
     //ambil username berdasarkan id
-    $result = mysqli_query($conn, "SELECT username FROM admin WHERE id = $id");
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE id = $id");
     $row = mysqli_fetch_assoc($result);
 
     //cek cookie dan username
@@ -25,7 +25,7 @@ if (isset($_SESSION["login"])) {
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if ($password === $row["password"] ) {
@@ -124,9 +124,7 @@ if (isset($_POST["login"])) {
       
         
 
-        .center form{
-            /* padding: 0 200px; */
-        }
+        
         form .txt_field{
             position: relative;
             margin: 20px 0;
@@ -160,33 +158,12 @@ button[type="submit"]:hover{
     </style>
 </head>
 <body>
-<!-- <?php if(isset($error)) : ?>
+ <?php if(isset($error)) : ?>
         <script>
             alert('Username / Password salah!');
         </script>
     <?php endif; ?>
-<form action="" method="post">
-           <div>
-            <div class="txt_field">
-            <input type="text" name="username" id="username" autocomplete="off">
-            <span></span>
-            <label for="username">Username:</label>
-           </div>
-            <div class="txt_field">
-            <input type="password" name="password" id="password" autocomplete="off">
-            <span></span>
-            <label for="password">Password:</label>
-            </div>
-            <div class="checkbox">
-            <input type="checkbox" name="remember" id="remember">
-            <label for="remember">Remember me</label>
-            </div>
-            <button type="submit" name="login">Login</button>
-            <div class="signup_link">
-                tidak mempunyai akun? <a href="registrasi.php">Registrasi</a>
-            </div>
-        </form>
-    </div> -->
+
     <div class="center">
         <nav>
                 <a href="login.php">Login</a>

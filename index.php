@@ -15,7 +15,7 @@ body {
   background: url(tampilan.jpg) top no-repeat;
   background-color: #101820;
   background-size: 100%;
-  background: linear-gradient(0deg,rgba(1,1,,3,1)3%, rgba);
+ 
 }
 .navbar {
   display: flex;

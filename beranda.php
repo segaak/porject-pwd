@@ -159,7 +159,9 @@ main {
             </ul>
         </div>
     </nav>
+    
     <main>
+
       <selection class="paket-wisata">
             <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
@@ -182,6 +184,7 @@ main {
                 </div>
                 </div>
             </selection>
+
             <selection class="paket-wisata">
               <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
@@ -204,6 +207,7 @@ main {
                 </div>
                 </div>
             </selection>
+            
             <selection class="paket-wisata">
               <div class="paket-wisata-container">
                 <div class="paket-wisata-item">
@@ -226,6 +230,7 @@ main {
                 </div>
             </div>
         </selection>
+
         </main>
 </body>
 </html>

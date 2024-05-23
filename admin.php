@@ -1,13 +1,47 @@
 <?php
+session_start();
 require 'function.php';
-if (isset($_POST["register"])) {
-    if (registrasi($_POST) > 0) {
-        echo "<script>
-                alert('Registrasi berhasil!');
-            </script>";
-    } else {
-        echo mysqli_error($conn);
+//cek cookie dahulu saat membuka web
+if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+    $id = $_COOKIE['id'];
+    $key = $_COOKIE['key'];
+
+    //ambil username berdasarkan id
+    $result = mysqli_query($conn, "SELECT username FROM admin WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    //cek cookie dan username
+    if ($key === hash('sha256', $row['username'])) {
+        $_SESSION['login'] = true;
     }
+}
+
+// set jika cookie masih ada login ke index
+if (isset($_SESSION["login"])) {
+    header("Location: donasi.php");
+    exit;
+}
+
+if (isset($_POST["login"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        if ($password === $row["password"] ) {
+           //set session
+            $_SESSION["login"] = true;
+            // cek remember me
+            if (isset($_POST["remember"])) {
+                //buat cookie
+                setcookie('id', $row['id'], time() + 60);
+                setcookie('key', hash('sha256', $row['username']), time() + 60);
+            }
+            header("Location: donasi.php");
+            exit;
+        }
+    }
+    $error = true;
 }
 ?>
 <!DOCTYPE html>
@@ -15,7 +49,7 @@ if (isset($_POST["register"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registrasi</title>
+    <title>halaman admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body{
@@ -61,30 +95,30 @@ if (isset($_POST["register"])) {
             border-radius: 8px;
             transition: all .5 ease 0s; */
         }
+       
         a:nth-child(1){
             width: 100px;
         }
         nav .start-login {
             left: 0;
             width: 100px;
-          }
-          a:nth-child(2){
+           
+        }
+        a:nth-child(2){
             width: 100px;
-          }
-          nav .start-registrasi,  a:nth-child(2):hover ~ .animation{
-            left: 105px;
+        }
+        nav .start-registrasi{
+            left: 100px;
             width: 100px;
-            border-bottom: 2px solid blue;
         }
         a:nth-child(3){
-            width: 80px;
+            width: 100px;
         }
-        nav .start-admin{
-            left: 200px;
-            width: 80px;
+        nav .start-admin, a:nth-child(3):hover ~ .animation{
+            left: 215px;
+            width: 85px;
+            border-bottom: 2px solid blue;
         }
-      
-
         
         form .txt_field{
             position: relative;
@@ -98,13 +132,12 @@ if (isset($_POST["register"])) {
             outline: 0;
             margin-top: 5px;
             box-sizing: border-box;
-            
         }
         button[type="submit"]{
     width: 100%;
     height: 60px;
     background: #2691d9;
-    border: 1px;
+    border: 1px ;
     font-size: 18px;
     border-radius: 5px;
     cursor: pointer;
@@ -120,14 +153,20 @@ button[type="submit"]:hover{
     </style>
 </head>
 <body>
-  <div class="center">
-  <nav>
-    <a href="login.php">Login</a>
-    <a href="registrasi.php">registrasi</a>
-    <a href="admin.php">admin</a>
-    <div class="animation start-registrasi"></div>
-  </nav>
-<form action="" method="post">
+ <?php if(isset($error)) : ?>
+        <script>
+            alert('Username / Password salah!');
+        </script>
+    <?php endif; ?>
+
+    <div class="center">
+        <nav>
+                <a href="login.php">Login</a>
+                <a href="registrasi.php">registrasi</a>
+                <a href="admin.php">admin</a>
+                <div class="animation start-admin"></div>
+        </nav>
+        <form action="" method="post">
             <h1 class="text-center" style="padding: 0 0 10px 0; margin-top: 10px;">login</h1>
             <div class="txt_field">
             <label for="username">Username:</label>
@@ -137,13 +176,11 @@ button[type="submit"]:hover{
             <label for="Password">Password:</label>
             <input type="password" class="input" name="password" id="password" autocomplete="off">
             </div>
-            <div class="txt_field">
-            <label for="password2">Konfirmasi Password:</label>
-            <input type="password" class="input" name="password2" id="password2" autocomplete="off">
-            </div>
             <div class="checkbox">
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember me</label>
             </div>
-            <button type="submit" name="register">Login</button>
+            <button type="submit" name="login">Login</button>
         </form>
     </div>
 </body>

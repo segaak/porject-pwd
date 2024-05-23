@@ -1,5 +1,20 @@
 <?php
 require 'function.php';
+$charity = mysqli_query($conn, "SELECT * FROM donasi");
+$asrama1 = query("select nama, catatan from donasi where tujuan = 'asrama1'");
+if (isset($_POST["tambah"])) {
+    if (tambah($_POST) > 0) {
+        echo "<script>
+                alert('Data berhasil ditambahkan!');
+                document.location.href = 'asrama1.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Data gagal ditambahkan!');
+              </script>";
+    }
+}
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +35,7 @@ require 'function.php';
         body {
             font-family: Arial, sans-serif;
             background-color: #101820;
+            color: white;
         }
 
         header.atas {
@@ -87,7 +103,7 @@ require 'function.php';
             max-width: 1160px;
             border-radius: 10px;
             margin: 2rem auto;
-            background-color: pink;
+            /* background-color: pink; */
         }
 
         .paket-wisata {
@@ -134,7 +150,7 @@ require 'function.php';
             text-align: justify;
         }
 
-        .mx-auto {
+        /* .mx-auto {
             width: 1160px;
             box-shadow: 0 0 8px darkslategray;
             background-color: #101820;
@@ -161,6 +177,121 @@ require 'function.php';
         .custom-card {
             background-color: #101820;
             color: white;
+        } */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #252525;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 50px;
+            max-width: 1170px;
+        }
+
+        .sidebar {
+            background-color: #2c2c2c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1 1 30%;
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1 1 70%;
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: none;
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .form-group input:disabled,
+        .form-group textarea:disabled {
+            background-color: #4d4d4d;
+        }
+
+        .btn {
+            background-color: #ffcc00;
+            color: #101820;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e6b800;
+        }
+        .container .sidebar h4{
+            border-bottom: 1px solid white;
+
+        }
+        .container .sidebar h3 {
+              border-bottom: 1px solid white;
+        }
+        .card {
+            /* background-color: #2c2c2c; */
+            background-color: #3a3a3a;
+            border: none;
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+       
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar,
+            .content {
+                flex: 1 1 100%;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu li {
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
@@ -181,7 +312,7 @@ require 'function.php';
     <header class="bawah">
         <h1>Vatika Yayasan</h1>
     </header>
-    <div class="text-center" style="text-decoration: none;">
+    <!-- <div class="text-center" style="text-decoration: none;">
 
 
         <main>
@@ -194,7 +325,7 @@ require 'function.php';
             <form action="" method="post">
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label text-start form-label">Nama Donatur</label>
-                    <div class="col-sm-10">
+                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                 </div>
@@ -264,11 +395,100 @@ require 'function.php';
             </form>
         </div>
     </div>
+</div> 
+</main>-->
+<div class="container">
+    <div class="sidebar">
+        <h3>pesan</h3>
+<?php
+    foreach ($asrama1 as $as1) :
+    ?>
+    <div class="card" style="width: 18rem;">
+  <div class="card-header">
+  <h4><?= $as1["nama"]?></h4>
+  </div>
+    <!-- <h5><?= $as1>["nama"]?></h5> -->
+    <p><?= $as1["catatan"]?></p>
 </div>
+    <?php
+    endforeach
+    ?>
+    </div>
+    <div class="content">
+        <h2>donasikan sekarang</h2>
+        <form action="" method="post">
+        <div class="form-group">
+                    <label for="nama" class="col-sm-2 col-form-label text-start form-label">Nama Donatur</label>
+                        <input type="text" class="form-control" id="nama" name="nama" required>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="telepon" class="col-sm-2 col-form-label text-start form-label">No.Telepon</label>
+                        <input type="text" class="form-control" id="telepon" name="telepon" required>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="alamat" class="col-sm-2 col-form-label text-start form-label">Alamat</label>
+                    
+                        <input type="text" class="form-control" id="alamat" name="alamat" required>
+                   
+                </div>
+                <div class="form-group">
+                    <label for="kota" class="col-sm-2 col-form-label text-start form-label">Kota</label>
+                    
+                        <input type="text" class="form-control" id="kota" name="kota" required>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="provinsi" class="col-sm-2 col-form-label text-start form-label">Provinsi</label>
+                    
+                        <input type="text" class="form-control" id="provinsi" name="provinsi" required>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="pos" class="col-sm-2 col-form-label text-start form-label">Kode Pos</label>
+                    
+                        <input type="text" class="form-control" id="pos" name="pos" required>
+                
+                </div>
+                <div class="form-group">
+                    <label for="jumlah" class="col-sm-2 col-form-label text-start form-label">Jumlah</label>
+                    
+                        <input type="text" class="form-control" id="jumlah" name="jumlah" required>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="metode" class="col-sm-2 col-form-label text-start form-label">Metode Pembayaran</label>
+                    
+                        <select class="form-select form-control" id="metode" name="metode" required>
+                            <option value="">- Pilih Metode Pembayaran -</option>
+                            <option value="transferbank">Transfer Bank</option>
+                            <option value="kartukredit">Kartu Kredit/Debit</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="dompetdigital">Dompet Digital</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
+                    
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="asrama1" readonly>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="catatan" class="col-sm-2 col-form-label text-start form-label">Catatan</label>
+                    
+                        <input type="text" class="form-control" id="catatan" name="catatan" required>
+                    
+                </div>
+                    <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
+                
+        </form>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        </main>
 </body>
 
 </html>
