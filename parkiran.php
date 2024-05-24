@@ -17,6 +17,9 @@ if (isset($_POST["tambah"])) {
               </script>";
     }
 }
+require 'function.php';
+$charity = mysqli_query($conn, "SELECT * FROM donasi");
+$pesan = query("select nama, catatan, jumlah from donasi where tujuan = 'parkiran'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +40,7 @@ if (isset($_POST["tambah"])) {
         body {
             font-family: Arial, sans-serif;
             background-color: #101820;
+            color: white;
         }
 
         header.atas {
@@ -153,34 +157,121 @@ if (isset($_POST["tambah"])) {
             text-align: justify;
         }
 
-        .mx-auto {
-            width: 1160px;
-            box-shadow: 0 0 8px darkslategray;
-            background-color: #101820;
-            border-radius: 10px;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #252525;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 50px;
+            max-width: 1170px;
         }
 
-        .card {
-            margin-top: 10px;
+        .sidebar {
+            background-color: #2c2c2c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1 1 30%;
         }
 
-        h1 {
-            width: 800px;
+        .content {
+            padding: 20px;
+            flex: 1 1 70%;
         }
 
-        .form-label {
-            margin-bottom: 0;
-            padding-right: 5px;
+        .content h2 {
+            margin-bottom: 20px;
         }
-        .form-control {
-            background-color: #28353a;
-            color: white;
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
             border: none;
+            border-radius: 5px;
+            background: none;
+            background-color: #3a3a3a;
+            color: #ffffff;
         }
-        .custom-card {
-            background-color: #101820;
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .form-group input:disabled,
+        .form-group textarea:disabled {
+            background-color: #4d4d4d;
+        }
+
+        .btn {
+            background-color: #ffcc00;
+            color: #101820;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e6b800;
+        }
+        .container .sidebar h4{
+            /* border-bottom: 1px solid white; */
+
+        }
+        .container .sidebar h3 {
+              /* border-bottom: 1px solid white; */
+        }
+        .card {
+            /* background-color: #2c2c2c; */
+            background-color: #3a3a3a;
+            border: none;
             color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
         }
+        .pesan {
+  box-shadow: 0 0 8px darkslategray;
+  /* flex: 1; */
+  /* width: 100px; */
+  /* height: 500px; */
+  margin-bottom: 1rem;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 1rem;
+  /* text-align: center; */
+  transition: transform 0.3s ease;
+  border-bottom: 1px solid darkslategray;
+}
+.pesan h3{
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: white;
+  border-bottom: 1px solid darkslategray;
+}
+.pesan p{
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  text-align: justify;
+  color: white;
+}
     </style>
 </head>
 
@@ -207,62 +298,69 @@ if (isset($_POST["tambah"])) {
         </ul>
         <p>Dengan kontribusi dari berbagai pihak, Charity untuk Parkiran Yayasan membantu yayasan menyelenggarakan lebih banyak acara dan menjangkau lebih banyak orang, meningkatkan dampak sosial yang diberikan kepada masyarakat.</p>
     </header>
-    <div class="text-center" style="text-decoration: none;">
+    <div class="container">
+    <div class="sidebar">
+        <h3>pesan</h3>
+    <?php
+    foreach ($pesan as $row) :
+    ?>
+    <div class="pesan">
+    <h3><?= $row["nama"]?></h3>
+    <p><?= $row["catatan"]?></p>
+    <p><?= $row["jumlah"]?></p>
 
-
-        <main>
-        <div class="mx-auto">
-    <div class="card custom-card">
-        <div class="card-header text-start" style="padding: 15px">
-            Input Data Donasi
-        </div>
-        <div class="card-body">
-            <form action="" method="post">
-                <div class="mb-3 row">
+    </div>
+    <?php
+    endforeach
+    ?>
+    </div>
+    
+    <div class="content">
+        <h2>donasikan sekarang</h2>
+        <form action="" method="post">
+        <div class="form-group">
                     <label for="nama" class="col-sm-2 col-form-label text-start form-label">Nama Donatur</label>
-                    <div class="col-sm-10">
                         <input type="text" class="form-control" id="nama" name="nama" required>
-                    </div>
+                    
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="telepon" class="col-sm-2 col-form-label text-start form-label">No.Telepon</label>
-                    <div class="col-sm-10">
                         <input type="text" class="form-control" id="telepon" name="telepon" required>
-                    </div>
+                    
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="alamat" class="col-sm-2 col-form-label text-start form-label">Alamat</label>
-                    <div class="col-sm-10">
+                    
                         <input type="text" class="form-control" id="alamat" name="alamat" required>
-                    </div>
+                   
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="kota" class="col-sm-2 col-form-label text-start form-label">Kota</label>
-                    <div class="col-sm-10">
+                    
                         <input type="text" class="form-control" id="kota" name="kota" required>
-                    </div>
+                    
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="provinsi" class="col-sm-2 col-form-label text-start form-label">Provinsi</label>
-                    <div class="col-sm-10">
+                    
                         <input type="text" class="form-control" id="provinsi" name="provinsi" required>
-                    </div>
+                    
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="pos" class="col-sm-2 col-form-label text-start form-label">Kode Pos</label>
-                    <div class="col-sm-10">
+                    
                         <input type="text" class="form-control" id="pos" name="pos" required>
-                    </div>
+                
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="jumlah" class="col-sm-2 col-form-label text-start form-label">Jumlah</label>
-                    <div class="col-sm-10">
+                    
                         <input type="text" class="form-control" id="jumlah" name="jumlah" required>
-                    </div>
+                    
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="metode" class="col-sm-2 col-form-label text-start form-label">Metode Pembayaran</label>
-                    <div class="col-sm-10">
+                    
                         <select class="form-select form-control" id="metode" name="metode" required>
                             <option value="">- Pilih Metode Pembayaran -</option>
                             <option value="transferbank">Transfer Bank</option>
@@ -270,25 +368,22 @@ if (isset($_POST["tambah"])) {
                             <option value="paypal">PayPal</option>
                             <option value="dompetdigital">Dompet Digital</option>
                         </select>
-                    </div>
                 </div>
-                <div class="mb-3 row">
-                    <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="Parkiran" readonly>
-                    </div>
+                <div class="form-group">
+                <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
+                    
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="parkiran" readonly>
+                    
                 </div>
-                <div class="mb-3 row">
+                <div class="form-group">
                     <label for="catatan" class="col-sm-2 col-form-label text-start form-label">Catatan</label>
-                    <div class="col-sm-10">
+                    
                         <input type="text" class="form-control" id="catatan" name="catatan" required>
-                    </div>
+                    
                 </div>
-                <div class="col-12">
                     <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
-                </div>
-            </form>
-        </div>
+                
+        </form>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

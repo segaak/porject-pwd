@@ -18,9 +18,9 @@ if (isset($_POST["tambah"])) {
   }
 require 'function.php';
 $charity = mysqli_query($conn, "SELECT * FROM donasi");
-$asrama1 = query("select nama, catatan from donasi where tujuan = 'asrama1'");
+$asrama1 = query("select nama, catatan, jumlah from donasi where tujuan = 'asrama1'");
 ?>
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -339,7 +339,16 @@ $asrama1 = query("select nama, catatan from donasi where tujuan = 'asrama1'");
     <header class="atas">
     </header>
     <header class="bawah">
-        <h1>Vatika Yayasan</h1>
+        <p>Charity untuk asrama sebuah yayasan merupakan langkah proaktif dalam memastikan ketersediaan hunian yang layak bagi individu yang membutuhkan.</p>
+        <p>Tujuan utamanya adalah:</p>
+        <ul>
+            <li>Meningkatkan Aksesibilitas Tempat Tinggal: Program ini bertujuan untuk memberikan akses yang lebih mudah dan terjangkau terhadap tempat tinggal bagi mereka yang membutuhkan.</li>
+            <li>Meningkatkan Kualitas Hidup: Dengan menyediakan fasilitas yang layak, charity ini berperan dalam meningkatkan kualitas hidup penghuni asrama.</li>
+            <li>Memberikan Dukungan Sosial dan Emosional: Selain sebagai tempat tinggal, asrama juga menjadi tempat bagi individu untuk saling mendukung secara sosial dan emosional.</li>
+            <li>Menyediakan Lingkungan yang Aman: Keamanan merupakan prioritas utama, dan charity ini berusaha untuk menciptakan lingkungan yang aman bagi penghuninya.</li>
+            <li>Mendorong Pertumbuhan dan Kemandirian: Dengan memberikan fasilitas yang memadai, program ini mendorong penghuni untuk berkembang dan menjadi mandiri secara ekonomi dan sosial.</li>
+        </ul>
+        <p>Dengan demikian, charity untuk asrama sebuah yayasan bukan hanya tentang memberikan tempat tinggal, tetapi juga tentang memberikan landasan bagi pemulihan dan pertumbuhan bagi mereka yang membutuhkan.</p>
     </header>
     <!-- <div class="text-center" style="text-decoration: none;">
 
@@ -448,7 +457,7 @@ $asrama1 = query("select nama, catatan from donasi where tujuan = 'asrama1'");
     <div class="pesan">
     <h3><?= $as1["nama"]?></h3>
     <p><?= $as1["catatan"]?></p>
-    
+    <p><?= $as1["jumlah"]?></p>
 
     </div>
     <?php
