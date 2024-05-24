@@ -1,7 +1,12 @@
 <?php
-require 'function.php';
 if (isset($_POST["tambah"])) {
-    if (tambah($_POST) > 0) {
+    session_start();
+    require 'function.php';
+    if (!isset($_SESSION["login"])) {
+        header("Location: login.php");
+        exit;
+    
+    }if (tambah($_POST) > 0) {
         echo "<script>
                 alert('Data berhasil ditambahkan!');
                 document.location.href = 'parkiran.php';

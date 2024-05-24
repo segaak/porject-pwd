@@ -1,17 +1,21 @@
 <?php
-require 'function.php';
 if (isset($_POST["tambah"])) {
-    if (tambah($_POST) > 0) {
+    session_start();
+    require 'function.php';
+    if (!isset($_SESSION["login"])) {
+      header("Location: login.php");
+      exit;
+    } if (tambah($_POST) > 0) {
         echo "<script>
-                alert('Data berhasil ditambahkan!');
-                document.location.href = 'parkiran.php';
-              </script>";
-    } else {
-        echo "<script>
-                alert('Data gagal ditambahkan!');
-              </script>";
-    }
-}
+        alert('Data berhasil ditambahkan!');
+        document.location.href = 'dapur.php';
+        </script>";
+      } else {
+          echo "<script>
+          alert('Data gagal ditambahkan!');
+          </script>";
+      }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -186,7 +190,7 @@ if (isset($_POST["tambah"])) {
                 <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
-                <li><a href="login.php">Login</a></li>
+                <li><a href="beranda.php">Home</a></li>
             </ul>
         </div>
     </nav>
@@ -205,7 +209,6 @@ if (isset($_POST["tambah"])) {
         <p>Dengan kontribusi dari berbagai pihak, Charity untuk Dapur Yayasan membantu yayasan menjalankan misi mereka lebih efektif dan memberikan dampak positif yang lebih besar kepada masyarakat.</p>
     </header>
     <div class="text-center" style="text-decoration: none;">
-
 
         <main>
         <div class="mx-auto">

@@ -1,19 +1,24 @@
 <?php
+if (isset($_POST["tambah"])) {
+    session_start();
+    require 'function.php';
+    if (!isset($_SESSION["login"])) {
+      header("Location: login.php");
+      exit;
+    } if (tambah($_POST) > 0) {
+        echo "<script>
+        alert('Data berhasil ditambahkan!');
+        document.location.href = 'asrama2.php';
+        </script>";
+      } else {
+          echo "<script>
+          alert('Data gagal ditambahkan!');
+          </script>";
+      }
+  }
 require 'function.php';
 $charity = mysqli_query($conn, "SELECT * FROM donasi");
 $asrama1 = query("select nama, catatan from donasi where tujuan = 'asrama1'");
-if (isset($_POST["tambah"])) {
-    if (tambah($_POST) > 0) {
-        echo "<script>
-                alert('Data berhasil ditambahkan!');
-                document.location.href = 'asrama1.php';
-              </script>";
-    } else {
-        echo "<script>
-                alert('Data gagal ditambahkan!');
-              </script>";
-    }
-}
 ?>
 ?>
 <!DOCTYPE html>
@@ -252,11 +257,11 @@ if (isset($_POST["tambah"])) {
             background-color: #e6b800;
         }
         .container .sidebar h4{
-            border-bottom: 1px solid white;
+            /* border-bottom: 1px solid white; */
 
         }
         .container .sidebar h3 {
-              border-bottom: 1px solid white;
+              /* border-bottom: 1px solid white; */
         }
         .card {
             /* background-color: #2c2c2c; */
@@ -268,7 +273,31 @@ if (isset($_POST["tambah"])) {
             padding: 1rem;
             margin-bottom: 1rem;
         }
-       
+        .pesan {
+  box-shadow: 0 0 8px darkslategray;
+  /* flex: 1; */
+  /* width: 100px; */
+  /* height: 500px; */
+  margin-bottom: 1rem;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 1rem;
+  /* text-align: center; */
+  transition: transform 0.3s ease;
+  border-bottom: 1px solid darkslategray;
+}
+.pesan h3{
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: white;
+  border-bottom: 1px solid darkslategray;
+}
+.pesan p{
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  text-align: justify;
+  color: white;
+}
 
         @media (max-width: 768px) {
             .container {
@@ -303,7 +332,7 @@ if (isset($_POST["tambah"])) {
                 <a href="index.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
-                <li><a href="index.php">Login</a></li>
+                <li><a href="Beranda.php">Home</a></li>
             </ul>
         </div>
     </nav>
@@ -400,20 +429,33 @@ if (isset($_POST["tambah"])) {
 <div class="container">
     <div class="sidebar">
         <h3>pesan</h3>
-<?php
+<!-- <?php
     foreach ($asrama1 as $as1) :
     ?>
     <div class="card" style="width: 18rem;">
   <div class="card-header">
   <h4><?= $as1["nama"]?></h4>
   </div>
-    <!-- <h5><?= $as1>["nama"]?></h5> -->
     <p><?= $as1["catatan"]?></p>
 </div>
     <?php
     endforeach
+    ?> -->
+
+    <?php
+    foreach ($asrama1 as $as1) :
+    ?>
+    <div class="pesan">
+    <h3><?= $as1["nama"]?></h3>
+    <p><?= $as1["catatan"]?></p>
+    
+
+    </div>
+    <?php
+    endforeach
     ?>
     </div>
+    
     <div class="content">
         <h2>donasikan sekarang</h2>
         <form action="" method="post">

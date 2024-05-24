@@ -1,5 +1,21 @@
 <?php
-require 'function.php';
+if (isset($_POST["tambah"])) {
+    session_start();
+    require 'function.php';
+    if (!isset($_SESSION["login"])) {
+      header("Location: login.php");
+      exit;
+    } if (tambah($_POST) > 0) {
+        echo "<script>
+        alert('Data berhasil ditambahkan!');
+        document.location.href = 'asrama2.php';
+        </script>";
+      } else {
+          echo "<script>
+          alert('Data gagal ditambahkan!');
+          </script>";
+      }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +40,7 @@ require 'function.php';
 
         header.atas {
             box-shadow: 0 0 8px darkslategray;
-            background: url(navbar.jpg) center/cover no-repeat;
+            background: url(dapur.jpg) center/cover no-repeat;
             padding: 12rem;
             position: relative;
             margin-left: 13rem;
@@ -35,12 +51,14 @@ require 'function.php';
         header.bawah {
             box-shadow: 0 0 8px darkslategray;
             background-color: #101820;
-            padding: 4rem;
+            padding: 1rem;
             position: relative;
             margin-left: 13rem;
             margin-right: 13rem;
             border-radius: 10px;
             margin-top: 20px;
+            color: white;
+            font-size: 20px;
         }
 
         .navbar {
@@ -169,17 +187,26 @@ require 'function.php';
     <nav>
         <div class="navbar">
             <div class="logo">
-                <a href="index.php">Vatika Yayasan</a>
+                <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
-                <li><a href="index.php">Login</a></li>
+                <li><a href="beranda.php">Home</a></li>
             </ul>
         </div>
     </nav>
     <header class="atas">
     </header>
     <header class="bawah">
-        <h1>Vatika Yayasan</h1>
+        <p>Charity untuk asrama sebuah yayasan merupakan langkah proaktif dalam memastikan ketersediaan hunian yang layak bagi individu yang membutuhkan.</p>
+        <p>Tujuan utamanya adalah:</p>
+        <ul>
+            <li>Meningkatkan Aksesibilitas Tempat Tinggal: Program ini bertujuan untuk memberikan akses yang lebih mudah dan terjangkau terhadap tempat tinggal bagi mereka yang membutuhkan.</li>
+            <li>Meningkatkan Kualitas Hidup: Dengan menyediakan fasilitas yang layak, charity ini berperan dalam meningkatkan kualitas hidup penghuni asrama.</li>
+            <li>Memberikan Dukungan Sosial dan Emosional: Selain sebagai tempat tinggal, asrama juga menjadi tempat bagi individu untuk saling mendukung secara sosial dan emosional.</li>
+            <li>Menyediakan Lingkungan yang Aman: Keamanan merupakan prioritas utama, dan charity ini berusaha untuk menciptakan lingkungan yang aman bagi penghuninya.</li>
+            <li>Mendorong Pertumbuhan dan Kemandirian: Dengan memberikan fasilitas yang memadai, program ini mendorong penghuni untuk berkembang dan menjadi mandiri secara ekonomi dan sosial.</li>
+        </ul>
+        <p>Dengan demikian, charity untuk asrama sebuah yayasan bukan hanya tentang memberikan tempat tinggal, tetapi juga tentang memberikan landasan bagi pemulihan dan pertumbuhan bagi mereka yang membutuhkan.</p>
     </header>
     <div class="text-center" style="text-decoration: none;">
 
@@ -247,9 +274,9 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="informasi" class="col-sm-2 col-form-label text-start form-label">Informasi</label>
+                    <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="informasi" name="informasi" required>
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="Asrama2" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -259,7 +286,7 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
                 </div>
             </form>
         </div>

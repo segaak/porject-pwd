@@ -1,5 +1,21 @@
 <?php
-require 'function.php';
+if (isset($_POST["tambah"])) {
+    session_start();
+    require 'function.php';
+    if (!isset($_SESSION["login"])) {
+      header("Location: login.php");
+      exit;
+    } if (tambah($_POST) > 0) {
+        echo "<script>
+        alert('Data berhasil ditambahkan!');
+        document.location.href = 'lantaidasar.php';
+        </script>";
+      } else {
+          echo "<script>
+          alert('Data gagal ditambahkan!');
+          </script>";
+      }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +40,7 @@ require 'function.php';
 
         header.atas {
             box-shadow: 0 0 8px darkslategray;
-            background: url(navbar.jpg) center/cover no-repeat;
+            background: url(dapur.jpg) center/cover no-repeat;
             padding: 12rem;
             position: relative;
             margin-left: 13rem;
@@ -35,12 +51,14 @@ require 'function.php';
         header.bawah {
             box-shadow: 0 0 8px darkslategray;
             background-color: #101820;
-            padding: 4rem;
+            padding: 1rem;
             position: relative;
             margin-left: 13rem;
             margin-right: 13rem;
             border-radius: 10px;
             margin-top: 20px;
+            color: white;
+            font-size: 20px;
         }
 
         .navbar {
@@ -169,17 +187,26 @@ require 'function.php';
     <nav>
         <div class="navbar">
             <div class="logo">
-                <a href="index.php">Vatika Yayasan</a>
+                <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
-                <li><a href="index.php">Login</a></li>
+                <li><a href="beranda.php">Home</a></li>
             </ul>
         </div>
     </nav>
     <header class="atas">
     </header>
     <header class="bawah">
-        <h1>Vatika Yayasan</h1>
+        <p>Charity untuk lantai dasar sebuah yayasan merupakan inisiatif mulia yang bertujuan memperkuat fondasi fisik dan operasional lembaga tersebut. Dengan menggalang dana untuk pembangunan atau renovasi lantai dasar, yayasan dapat memastikan bahwa fasilitas utamanya—seperti ruang penerimaan, aula serbaguna, dan area layanan langsung—berfungsi optimal dan aman bagi penerima manfaat. Dukungan ini tidak hanya meningkatkan kenyamanan dan aksesibilitas, tetapi juga memberikan kesan positif bagi donatur dan komunitas, mencerminkan komitmen yayasan terhadap pelayanan yang berkualitas dan berkelanjutan.</p>
+        <p>Tujuan utamanya adalah:</p>
+        <ul>
+            <li>Meningkatkan Fasilitas Fisik: Memastikan lantai dasar yang kokoh, aman, dan nyaman untuk menunjang aktivitas sehari-hari yayasan.</li>
+            <li>Menyediakan Aksesibilitas yang Lebih Baik: Membuat fasilitas yang ramah bagi semua, termasuk penyandang disabilitas dan kelompok rentan lainnya.</li>
+            <li>Mendukung Operasional Yayasan: Menyediakan ruang yang diperlukan untuk kegiatan administrasi, penerimaan, dan pelayanan langsung kepada masyarakat.</li>
+            <li>Menciptakan Lingkungan yang Menyenangkan: Membuat ruang yang estetis dan fungsional, memberikan kesan positif bagi pengunjung dan penerima manfaat.</li>
+            <li>Memperkuat Komitmen Terhadap Pelayanan: Menunjukkan dedikasi yayasan dalam menyediakan layanan berkualitas melalui fasilitas yang memadai.</li>
+        </ul>
+        <p>Melalui inisiatif charity untuk lantai dasar ini, setiap individu memiliki kesempatan untuk berperan aktif dalam mendukung yayasan dan meningkatkan kualitas pelayanan bagi masyarakat. Kontribusi yang diberikan tidak hanya akan memperkuat fondasi fisik yayasan, tetapi juga mempertegas komitmen bersama dalam menciptakan lingkungan yang lebih baik dan mendukung program-program sosial yang berkelanjutan. Dengan demikian, setiap donasi yang terkumpul akan menjadi investasi jangka panjang bagi kesejahteraan komunitas dan keberhasilan yayasan dalam menjalankan misinya.</p>
     </header>
     <div class="text-center" style="text-decoration: none;">
 
@@ -247,9 +274,9 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="informasi" class="col-sm-2 col-form-label text-start form-label">Informasi</label>
+                    <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="informasi" name="informasi" required>
+                        <input type="text" class="form-control" id="tujuan" name="tujuan" value="Lantai Dasar" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -259,7 +286,7 @@ require 'function.php';
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
+                    <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
                 </div>
             </form>
         </div>
