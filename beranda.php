@@ -170,7 +170,7 @@ main {
                 <li><a href="contact.php">CP</a></li>
                 <?php
                 if(isset($_SESSION['admin']) && $_SESSION['admin'] == true): ?>
-                <li><a href="admin.php">Admin</a></li>
+                <li><a href="berandaadmin.php">Admin</a></li>
               <?php endif; ?>
             </ul>
         </div>

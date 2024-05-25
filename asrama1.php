@@ -17,8 +17,8 @@ if (isset($_POST["tambah"])) {
       }
   }
 require 'function.php';
-$charity = mysqli_query($conn, "SELECT * FROM donasi");
-$asrama1 = query("select nama, catatan, jumlah from donasi where tujuan = 'asrama1'");
+
+$asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
 ?>
 
 <!DOCTYPE html>
