@@ -38,11 +38,14 @@ if (isset($_POST["login"])) {
                     setcookie('id', $row['id'], time() + 3600); // 1 jam
                     setcookie('key', hash('sha256', $row['username']), time() + 3600); // 1 jam
                 }
-                header("Location: donasi.php");
+                echo "<script>
+                alert('Login Berhasil sebagai $username');
+                window.location.href = 'donasi.php';
+            </script>";
                 exit;
             }
         }
-        // $error = true;
+        $error = true;
     } else {
         $error = true; // Atau tambahkan pesan kesalahan khusus
     }
@@ -56,7 +59,6 @@ if (isset($_SESSION["login"])) {
     exit;
 }
 
-// Jika terjadi error pada login (misal: username/password salah)
 
 ?>
 <!DOCTYPE html>
