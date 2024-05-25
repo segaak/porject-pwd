@@ -21,7 +21,7 @@ if(isset($_POST['perbarui'])){
                 if($q1){
                     $sukses = "Password berhasil diperbarui";
                     echo "<script>
-                    alert('Password berhasil diperbarui');
+                    alert('Password berhasil diperbarui menjadi $password');
                     window.location.href = 'login.php';
                     </script>";
                 } else {

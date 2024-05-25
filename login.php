@@ -17,46 +17,65 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
     }
 }
 
+// set jika cookie masih ada admin ke index
 if (isset($_SESSION["login"])) {
     header("Location: donasi.php");
     exit;
 }
+
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
+
     // Tambahkan pengecekan apakah kedua bidang input diisi
     if (!empty($username) && !empty($password)) {
-        $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
-        if (mysqli_num_rows($result) === 1) {
-            $row = mysqli_fetch_assoc($result);
-            if ($password === $row["password"]) {
-                //set session
-                $_SESSION["login"] = true;
-                // cek remember me
+        // Tambahkan pengecekan login untuk admin
+        $result_admin = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
+        if ($result_admin && mysqli_num_rows($result_admin) === 1) {
+            $row_admin = mysqli_fetch_assoc($result_admin);
+            if ($password === $row_admin["password"]) {
+                // Set session
+                $_SESSION["admin"] = true;
+
+                // Check remember me
                 if (isset($_POST["remember"])) {
-                    //buat cookie
-                    setcookie('id', $row['id'], time() + 3600); // 1 jam
-                    setcookie('key', hash('sha256', $row['username']), time() + 3600); // 1 jam
+                    // Create cookies
+                    setcookie('id', $row_admin['id'], time() + 3600); // 1 hour
+                    setcookie('key', hash('sha256', $row_admin['username']), time() + 3600); // 1 hour
                 }
-                echo "<script>
-                alert('Login Berhasil sebagai $username');
-                window.location.href = 'donasi.php';
-            </script>";
+
+                // Redirect to admin dashboard
+                header("Location: admin.php");
                 exit;
             }
         }
+
+        // Tambahkan pengecekan login untuk user
+        $result_user = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+        if ($result_user && mysqli_num_rows($result_user) === 1) {
+            $row_user = mysqli_fetch_assoc($result_user);
+            if ($password === $row_user["password"]) {
+                // Set session
+                $_SESSION["login"] = true;
+
+                // Check remember me
+                if (isset($_POST["remember"])) {
+                    // Create cookies
+                    setcookie('id', $row_user['id'], time() + 3600); // 1 hour
+                    setcookie('key', hash('sha256', $row_user['username']), time() + 3600); // 1 hour
+                }
+
+                // Redirect to user dashboard
+                header("Location: donasi.php");
+                exit;
+            }
+        }
+
+        // Invalid credentials
         $error = true;
     } else {
-        $error = true; // Atau tambahkan pesan kesalahan khusus
+        $error = true; // Handle empty fields
     }
-}
-
-
-
-// Jika sudah login, langsung redirect ke halaman donasi
-if (isset($_SESSION["login"])) {
-    header("Location: donasi.php");
-    exit;
 }
 
 

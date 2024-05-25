@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,12 +147,15 @@ main {
                 <a href="beranda.php">Vatika Yayasan</a>
             </div>
             <ul class="menu">
+              
               <?php session_start();
-                if(isset($_SESSION['login']) && $_SESSION['login'] == true): ?>
+                if(isset($_SESSION['login']) && $_SESSION['login'] == true || isset($_SESSION['admin']) && $_SESSION['admin'] == true ) : 
+                ?>
                 <li><a href="logout.php">Logout</a></li>
               <?php else: ?>
                 <li><a href="login.php">Login</a></li>
               <?php endif; ?>
+             
             </ul>
         </div>
     </nav>
@@ -162,10 +168,14 @@ main {
                 <li><a href="informasi.php">Informasi</a></li>
                 <li><a href="donasi.php">Donasi</a></li>
                 <li><a href="contact.php">CP</a></li>
+                <?php
+                if(isset($_SESSION['admin']) && $_SESSION['admin'] == true): ?>
+                <li><a href="admin.php">Admin</a></li>
+              <?php endif; ?>
             </ul>
         </div>
     </nav>
-    <main>
+    <main>  
       <selection class="paket-wisata">
             <div class="paket-wisata-container">
                 <div class="paket-wisata-item">

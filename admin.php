@@ -1,47 +1,63 @@
 <?php
 session_start();
 require 'function.php';
-//cek cookie dahulu saat membuka web
+
+// Cek cookie
 if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
     $id = $_COOKIE['id'];
     $key = $_COOKIE['key'];
 
-    //ambil username berdasarkan id
+    // Ambil username berdasarkan id
     $result = mysqli_query($conn, "SELECT username FROM admin WHERE id = $id");
     $row = mysqli_fetch_assoc($result);
 
-    //cek cookie dan username
+    // Cek cookie dan username
     if ($key === hash('sha256', $row['username'])) {
-        $_SESSION['login'] = true;
+        $_SESSION['admin'] = true;
     }
 }
 
-// set jika cookie masih ada login ke index
-if (isset($_SESSION["login"])) {
-    header("Location: donasi.php");
+// Redirect jika admin sudah login
+if (isset($_SESSION["admin"])) {
+    header("Location: beranda.php");
     exit;
 }
 
-if (isset($_POST["login"])) {
+if (isset($_POST["admin"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
-    if (mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-        if ($password === $row["password"]) {
-            //set session
-            $_SESSION["login"] = true;
-            // cek remember me
-            if (isset($_POST["remember"])) {
-                //buat cookie
-                setcookie('id', $row['id'], time() + 60);
-                setcookie('key', hash('sha256', $row['username']), time() + 60);
+
+    // Lakukan pengecekan username dan password
+    if (!empty($username) && !empty($password)) {
+        $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
+        if (mysqli_num_rows($result) === 1) {
+            $row = mysqli_fetch_assoc($result);
+            if ($password === $row["password"]) {
+                // Set session admin
+                $_SESSION["admin"] = true;
+
+                // Cek remember me
+                if (isset($_POST["remember"])) {
+                    // Buat cookie
+                    setcookie('id', $row['id'], time() + 60);
+                    setcookie('key', hash('sha256', $row['username']), time() + 60); 
+                }
+
+                // Redirect ke halaman admin
+                header("Location: beranda.php");
+                exit;
             }
-            header("Location: donasi.php");
-            exit;
         }
+        $error = "Username atau password salah.";
+    } else {
+        $error = "Username dan password harus diisi.";
     }
-    $error = true;
+}
+
+// Jika sudah login, langsung redirect ke halaman admin
+if (isset($_SESSION["admin"])) {
+    header("Location: beranda.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -105,7 +121,7 @@ if (isset($_POST["login"])) {
             width: 100px;
         }
 
-        .center nav .start-login {
+        .center nav .start-admin {
             left: 0;
             width: 100px;
 
@@ -221,7 +237,7 @@ if (isset($_POST["login"])) {
     </div>
     <?php if (isset($error)) : ?>
         <script>
-            alert('Username / Password salah!');
+            alert('<?php echo $error; ?>');
         </script>
     <?php endif; ?>
 
@@ -246,7 +262,7 @@ if (isset($_POST["login"])) {
                 <input type="checkbox" name="remember" id="remember">
                 <label for="remember">Remember me</label>
             </div>
-            <button type="submit" name="login">Login</button>
+            <button type="submit" name="admin">Login</button>
         </form>
     </div>
 </body>
