@@ -46,6 +46,65 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
     <!-- Load Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #101820;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+
+        }
+
+        .navbar a {
+            font-size: 25px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .menu {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .menu li {
+            margin: 0 1rem;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .menu li a:hover {
+            color: #ffcc00;
+        }
+
+        main {
+            max-width: 1160px;
+            border-radius: 10px;
+            margin: 2rem auto;
+            background-color: pink;
+        }
+        
         .container {
             max-width: 500px;
             display: flex;
@@ -54,11 +113,28 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
             align-self: center;
             margin-top: 200px;
         }
+        .tablee{
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .table{
+            margin-top: 100px;
+        }
     </style>
 </head>
 
 <body>
-
+<nav>
+        <div class="navbar">
+            <div class="logo">
+                <a href="beranda.php">Vatika Yayasan</a>
+            </div>
+            <ul class="menu">
+                <li><a href="beranda.php">Home</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         <canvas id="donationChart"></canvas>
 
@@ -113,7 +189,7 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
         </script>
     </div>
 
-    <div class="table">
+    <div class="tablee">
         <center>
             <table class="table">
                 <thead>
@@ -134,26 +210,39 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
                     
                     <tr>
                         <h2 style="justify-content: center;">donasi untuk asrama 1</h2>
-                    <?php
-                    foreach ($asrama1 as $donasi) {
-                        echo "<tr>";
-                        echo "<td>" . $donasi['nama'] . "</td>";
-                        echo "<td>" . $donasi['telepon'] . "</td>";
-                        echo "<td>" . $donasi['alamat'] . "</td>";
-                        echo "<td>" . $donasi['kota'] . "</td>";
-                        echo "<td>" . $donasi['provinsi'] . "</td>";
-                        echo "<td>" . $donasi['pos'] . "</td>";
-                        echo "<td>" . $donasi['jumlah'] . "</td>";
-                        echo "<td>" . $donasi['metode'] . "</td>";
-                        echo "<td>" . $donasi['tujuan'] . "</td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                     <a href="">Update</a>
-                <a href="">Delete</a>
-            
-                </tr>
-                   
+                    <?php foreach($asrama1 as $asr1): ?>
+                        <td><?= $asr1['nama']; ?></td>
+                        <td><?= $asr1['telepon']; ?></td>
+                        <td><?= $asr1['alamat']; ?></td>
+                        <td><?= $asr1['kota']; ?></td>
+                        <td><?= $asr1['provinsi']; ?></td>
+                        <td><?= $asr1['pos']; ?></td>
+                        <td><?= $asr1['jumlah']; ?></td>
+                        <td><?= $asr1['metode']; ?></td>
+                        <td><?= $asr1['tujuan']; ?></td>
+                        <td>
+                            <a href="edit.php?id=<?= $asr1['id']; ?>">Edit</a> |
+                            <a href="hapus.php?id=<?= $asr1['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <thead class="table">
+
+                    <h2 style="justify-content: center;">donasi untuk asrama 1</h2>
+                    <tr>
+                      <th>nama</th>
+                      <th>telepon</th>
+                      <th>alamat</th>
+                      <th>Kota</th>
+                    <th>Provinsi</th>
+                    <th>Kode Pos</th>
+                    <th>Jumlah</th>
+                    <th>Metode Pembayaran</th>
+                    <th>Tujuan</th>
+                    <th>aksi</th>
+                    </tr>
+                </thead>
+
                 </tbody>
             </table>
         </center>
