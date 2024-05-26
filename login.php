@@ -45,8 +45,10 @@ if (isset($_POST["login"])) {
                 }
 
                 // Redirect to admin dashboard
-                header("Location: admin.php");
-                exit;
+                echo "<script>
+                alert('Login Berhasil sebagai $username');
+                window.location.href = 'beranda.php';
+                 </script>";
             }
         }
 
@@ -66,8 +68,11 @@ if (isset($_POST["login"])) {
                 }
 
                 // Redirect to user dashboard
-                header("Location: donasi.php");
-                exit;
+                
+                echo "<script>
+                alert('Login Berhasil sebagai $username');
+                window.location.href = 'donasi.php';
+                </script>";
             }
         }
 

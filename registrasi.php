@@ -5,6 +5,7 @@ if (isset($_POST["register"])) {
         echo "<script>
                 alert('Registrasi berhasil!');
             </script>";
+            header("Location: beranda.php");
     } else {
         echo mysqli_error($conn);
     }
