@@ -1,0 +1,172 @@
+/* footer index dll */
+footer{
+    background-color: #101820;
+    border-top: 1px solid darkslategray;
+    color: white;
+}
+.footercontainer{
+    width: 100%;
+    padding: 70px 30px 20px;
+}
+.ikonsosmed{
+    display: flex;
+    justify-content: center;
+}
+.ikonsosmed a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.ikonsosmed a i{
+    color: black;
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+.ikonsosmed a:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+.ikonsosmed a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+.footernav{
+    margin: 30px 0;
+    list-style: none;
+}
+.footernav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+   
+}
+.footernav ul li a{
+  text-decoration: none;
+  list-style: none;
+    margin: 20px;
+    color: white;
+font-size: 1.3em;
+opacity: 0.7;
+transition: 0.5s;
+}
+.footernav ul li a:hover{
+   opacity: 1;
+}
+.footerbottom{
+  
+    padding: 20px;
+    text-align: center;
+}
+.footerbottom p{
+    margin: 0;
+    color: white;
+    opacity: 0.7;
+}
+.designer{
+    color: white;
+    opacity: 0.7;
+    font-size: 1.2em;
+   font-weight: bold;
+}
+@media (max-width: 700px){
+    .footernav ul{
+        flex-direction: column;
+    }
+    .footernav ul li a{
+        margin: 10px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* untuk admin dashboard */
+/* .navbar a {
+    font-size: 25px;
+    text-decoration: none;
+    color: #ffffff;
+}
+.navbar .logo a {
+    font-size: 35px;
+    font-weight: bold;
+}
+.navbar .menu li {
+    margin: 0 1rem;
+}
+.navbar .menu li a:hover {
+    color: #ffcc00;
+}
+.admin-main {
+    margin: 2rem auto;
+    background-color: #2e2e2e;
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+}
+.table thead {
+    background-color: #333;
+}
+.table tbody tr:hover {
+    background-color: #444;
+}
+.chart-container {
+    margin-top: 2rem;
+}
+.admin-table-container {
+    margin-top: 2rem;
+} */
+/* a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+h1,h2 {
+    color: white;
+}
+.admin-side-menu{
+    position: fixed;
+    background: darkslategray;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.admin-side-menu .brand-name{
+    text-align: center;
+    color: white;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}   
+.admin-side-menu li{
+    font-size: 24px;
+    padding: 10px 40px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.admin-side-menu li:hover{
+    background: #333;
+    color: #ffcc00;
+}
+.admin-container{
+    position: absolute;
+    right: 0;
+    width: 80vw;
+    height: 100vh;
+}
+.admin-container .header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    height: 10vh;
+    background: darkslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */

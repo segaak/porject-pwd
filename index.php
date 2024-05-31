@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vatika Yayasan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
   <style>
 *{
   margin: 0;
@@ -237,5 +239,28 @@ body {
   </div>
   <header class="batas">
   </header>
+
+  <footer>
+    <div class="footercontainer">
+
+      <div class="footernav">
+        <ul>
+          <li><a href="informasi.php">Informasi</a></li>
+          <li><a href="login.php">Login</a></li>
+          <li><a href="contact.php">Contact Person</a></li>
+          <li><a href="beranda.php">Beranda</a></li>
+        </ul>
+      </div>  
+      <div class="ikonsosmed">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footerbottom">
+      <p>Copyright &copy;2024; Designed by <span class="designer">Vatika Yayasan</span></p>
+    </div>
+    </footer>
 </body>
 </html>
