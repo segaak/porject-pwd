@@ -9,8 +9,7 @@ if (!isset($_SESSION["admin"])) {
 }
 
 // Fungsi untuk mengambil total nominal donasi untuk setiap tujuan
-function getTotalNominal($tujuan)
-{
+function getTotalNominal($tujuan) {
     global $conn;
     $result = mysqli_query($conn, "SELECT SUM(jumlah) AS total FROM donasi WHERE tujuan = '$tujuan'");
     $row = mysqli_fetch_assoc($result);
@@ -116,7 +115,7 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
 
 }
 .sidebar-menu ul li a{
-    color: darkblue;
+    color: white;
     text-decoration: none;
     align-items: center;
 }
