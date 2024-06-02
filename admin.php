@@ -68,11 +68,12 @@ if (isset($_SESSION["admin"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>halaman admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
             background-color: #101820;
             color: white;
         }
@@ -219,6 +220,9 @@ if (isset($_SESSION["admin"])) {
         .menu li a:hover {
             color: #ffcc00;
         }
+        .pilihan {
+            margin-top: 21rem;
+        }
     </style>
 </head>
 
@@ -227,6 +231,7 @@ if (isset($_SESSION["admin"])) {
         <nav>
             <div class="navbar">
                 <div class="logo">
+                <img src="logo.png" alt="logo" width="50px" height="50px" style="margin-top: -15px;">
                     <a href="beranda.php">Vatika Yayasan</a>
                 </div>
                 <ul class="menu">
@@ -242,14 +247,17 @@ if (isset($_SESSION["admin"])) {
     <?php endif; ?>
 
     <div class="center">
+        <div class="pilihan">
         <nav>
             <a href="login.php">Login</a>
             <a href="registrasi.php">registrasi</a>
             <a href="admin.php">admin</a>
             <div class="animation start-admin"></div>
         </nav>
+    </div>
         <form action="" method="post">
-            <h1 class="text-center" style="padding: 0 0 10px 0; margin-top: 10px;">login</h1>
+            <img src="takologin.png" style="margin-left: 250px; margin-top: 10px; width: 300px; height: 300px;">
+            <h1 class="text-center" style="padding: 0 0 10px 0; margin-top: 10px;">Login Admin</h1>
             <div class="txt_field">
                 <label for="username">Username:</label>
                 <input type="text" class="input" name="username" id="username" autocomplete="off">
@@ -265,6 +273,38 @@ if (isset($_SESSION["admin"])) {
             <button type="submit" name="admin">Login</button>
         </form>
     </div>
+    <footer style="margin-top: 50rem;">
+    <div class="footercontainer">
+
+      <div class="footernav">
+        <ul>
+          <li><a href="informasi.php">Informasi</a></li>
+          <?php
+                if(isset($_SESSION['login']) && $_SESSION['login'] == true || isset($_SESSION['admin']) && $_SESSION['admin'] == true ) : 
+                ?>
+                <li><a href="logout.php">Logout</a></li>
+              <?php else: ?>
+                <li><a href="login.php">Login</a></li>
+              <?php endif; ?>
+          <li><a href="beranda.php">Beranda</a></li>
+        </ul>
+      </div>  
+      <div class="ikonsosmed">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footerbottom">
+      <p>Copyright &copy;2024; Designed by <span class="designer">Vatika Yayasan</span></p>
+    </div>
+    <div style="margin-top: -245px;">
+    <img src="tako0.png" width="300px" height="270px" style="margin-left: 200px;">
+    </div><div style="margin-top: -275px;">
+    <img src="tako1.png" width="300px" height="270px" style="margin-left: 1100px;">
+    </div>
+    </footer>
 </body>
 
 </html>

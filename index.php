@@ -123,6 +123,12 @@ body {
   font-size: 18px;
   text-align: justify;
 }
+.header1 img{
+width: 200px;
+height: 160px;
+margin-top: -131px;
+margin-left: 580px;
+}
 .header2 {
   background-color: #fe5dd7;
   padding: 1.2rem;
@@ -145,6 +151,12 @@ body {
   font-size: 18px;
   text-align: justify;
   margin-left: 500px;
+}
+.header2 img{
+width: 214px;
+height: 171px;
+margin-top: -120px;
+margin-left: 10px;
 }
 .penutup h1 {
   color: white;
@@ -197,6 +209,7 @@ body {
   <nav>
     <div class="navbar">
       <div class="logo">
+      <img src="logo.png" alt="logo" width="50px" height="50px">
         <a>Vatika Yayasan</a>
       </div>
       <div class="login">
@@ -222,6 +235,7 @@ body {
     <p>Vatika Yayasan adalah platform penghubung antara donatur</p>
     <p>dan yayasan yang memungkinkan donatur untuk melakukan</p>
     <p>donasi agar menjadi lebih efektif dan efisien.</p>
+    <img src="tako3.png">
   </header>
   <header class="header2">
     <h1>CARA KERJANYA</h1>
@@ -229,6 +243,7 @@ body {
     <p>2. Pilih tujuan donasimu</p>
     <p>3. Isi seluruh data</p>
     <p>4. Submit data yang kamu isi</p>
+    <img src="tako2.png">
   </header>
   <div class="penutup">
     <h1>SIAPA YANG CITA-CITANYA MENJADI ORANG BAIK?</h1>
@@ -246,8 +261,13 @@ body {
       <div class="footernav">
         <ul>
           <li><a href="informasi.php">Informasi</a></li>
-          <li><a href="login.php">Login</a></li>
-          <li><a href="contact.php">Contact Person</a></li>
+          <?php
+                if(isset($_SESSION['login']) && $_SESSION['login'] == true || isset($_SESSION['admin']) && $_SESSION['admin'] == true ) : 
+                ?>
+                <li><a href="logout.php">Logout</a></li>
+              <?php else: ?>
+                <li><a href="login.php">Login</a></li>
+              <?php endif; ?>
           <li><a href="beranda.php">Beranda</a></li>
         </ul>
       </div>  
@@ -260,6 +280,16 @@ body {
     </div>
     <div class="footerbottom">
       <p>Copyright &copy;2024; Designed by <span class="designer">Vatika Yayasan</span></p>
+    </div>
+    <div style="margin-top: -245px;">
+    <img src="tako0.png" width="300px" height="270px" style="margin-left: 200px;">
+    </div><div style="margin-top: -275px;">
+    <img src="tako1.png" width="300px" height="270px" style="margin-left: 1100px;">
+    </div>
+    <div style="margin-top: -245px;">
+    <img src="tako0.png" width="300px" height="270px" style="margin-left: 200px;">
+    </div><div style="margin-top: -275px;">
+    <img src="tako1.png" width="300px" height="270px" style="margin-left: 1100px;">
     </div>
     </footer>
 </body>

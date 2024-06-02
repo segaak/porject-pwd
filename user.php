@@ -228,7 +228,7 @@ main {
 
     <div class="main-content" id="main-content">
         <header class="flex">
-            <h2><i class="uil uil-bars" id="menu-icon"></i>Total Donasi</h2>
+            <h2><i class="uil uil-bars" id="menu-icon"></i>Daftar Pengguna</h2>
             <div class="search-box">
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Search Here...">
@@ -243,100 +243,9 @@ main {
 
   
     <div class="chart">
-        <script>
-            // Sidebar Toggle
-            // let sideBar = document.getElementById('sidebar');
-            // let menuIcon = document.getElementById('menu-icon');
-            // let mainContent = document.getElementById('main-content');
-            
-            // menuIcon.onclick = () => {
-            //     sideBar.classList.toggle('toggleMenu');
-            //     mainContent.classList.toggle('toggleContent');
-            // };
-            
-            // Data donasi dari PHP
-            var donasiData = {
-                labels: ['Asrama1', 'Asrama2', 'Asrama3', 'Dapur', 'Fasilitas', 'Lantai Dasar', 'Parkiran', 'Perpustakaan', 'Taman'],
-            datasets: [{
-                label: 'Total Nominal Donasi (Rupiah)',
-                data: [
-                    <?php echo $asrama1Total; ?>,
-                    <?php echo $asrama2Total; ?>,
-                    <?php echo $asrama3Total; ?>,
-                    <?php echo $dapurTotal; ?>,
-                    <?php echo $fasilitasTotal; ?>,
-                    <?php echo $lantaidasarTotal; ?>,
-                    <?php echo $parkiranTotal; ?>,
-                    <?php echo $perpustakaanTotal; ?>,
-                    <?php echo $tamanTotal; ?>
-                ],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(99, 255, 132, 0.2)',
-                    'rgba(162, 54, 235, 0.2)',
-                    'rgba(206, 86, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(99, 255, 132, 1)',
-                    'rgba(162, 54, 235, 1)',
-                    'rgba(206, 86, 255, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
 
-        // Inisialisasi Chart
-        var ctx = document.getElementById('donationChart').getContext('2d');
-        var donationChart = new Chart(ctx, {
-            type: 'bar',
-            data: donasiData,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-        
-        function showDashboard() {
-            // Implementasi untuk menampilkan konten dashboard
-        }
-        
-        function showAdmin() {
-            // Implementasi untuk menampilkan konten admin
-        }
-
-        function showUser() {
-            // Implementasi untuk menampilkan konten user
-        }
-        </script> -->
         
         <main class="container">
-        <div class="cards">
-                <div class="single-card">
-                    <div><span>TOTAL DONASI</span><h2>Rp<?php echo number_format($totalDonasi, 0, ',', '.'); ?></h2></div>
-                    <i class="uil uil-calender"></i>
-                </div>
-                <div class="single-card">
-                    <div><span>TOTAL USER</span><h2><?php echo $totalUser; ?></h2></div>
-                    <i class="uil uil-users-alt"></i>
-                </div>
-            </div>
-        <div class="chart-container">
-            <canvas id="donationChart"></canvas>
-        </div>
 
         <div class="table-container">
             <?php

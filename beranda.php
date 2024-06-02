@@ -1,6 +1,29 @@
 <?php
 session_start();
+
+require 'function.php';
+
+// Fungsi untuk mengambil total nominal donasi untuk setiap tujuan
+function getTotalNominal($tujuan) {
+  global $conn;
+  $result = mysqli_query($conn, "SELECT SUM(jumlah) AS total FROM donasi WHERE tujuan = '$tujuan'");
+  $row = mysqli_fetch_assoc($result);
+  return $row['total'];
+}
+
+// Mendapatkan total nominal donasi untuk setiap tujuan
+$asrama1Total = getTotalNominal('asrama1');
+$asrama2Total = getTotalNominal('asrama2');
+$asrama3Total = getTotalNominal('asrama3');
+$dapurTotal = getTotalNominal('dapur');
+$fasilitasTotal = getTotalNominal('fasilitas');
+$lantaidasarTotal = getTotalNominal('lantai dasar');
+$parkiranTotal = getTotalNominal('parkiran');
+$perpustakaanTotal = getTotalNominal('perpustakaan');
+$tamanTotal = getTotalNominal('taman');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +33,12 @@ session_start();
   <title>Vatika Yayasan</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css">
   <style>
     * {
       margin: 0;
@@ -18,7 +47,7 @@ session_start();
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background-color: #101820;
     }
     .slider{width: 100%}
@@ -251,11 +280,10 @@ header::before {
     .paket-wisata-item {
       box-shadow: 0 0 8px darkslategray;
       flex: 1;
-      width: 100px;
-      height: 500px;
+      width: 365px;
+      height: 340px;
       margin-bottom: 1rem;
-      margin-right: 20px;
-      margin-left: 20px;
+      border-radius: 5px;
       padding: 1rem;
       text-align: center;
       transition: transform 0.3s ease;
@@ -275,6 +303,7 @@ header::before {
       font-size: 1.2rem;
       margin: 0.5rem 0;
       color: white;
+      text-align: left;
     }
 
     .paket-wisata-item p {
@@ -292,6 +321,7 @@ header::before {
 <nav>
     <div class="navbar">
       <div class="logo">
+      <img src="logo.png" alt="logo" width="50px" height="50px" style="margin-top: -15px;">
         <a href="beranda.php">Vatika Yayasan</a>
       </div>
       <ul class="menu">
@@ -367,7 +397,6 @@ header::before {
         <li><a href="beranda.php">Beranda</a></li>
         <li><a href="informasi.php">Informasi</a></li>
         <li><a href="donasi.php">Donasi</a></li>
-        <li><a href="contact.php">CP</a></li>
         <?php
         if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) : ?>
           <li><a href="berandaadmin.php">Admin</a></li>
@@ -378,71 +407,95 @@ header::before {
   <main>
     <selection class="paket-wisata">
       <div class="paket-wisata-container">
-        <div class="paket-wisata-item">
+      <a href="parkiran.php"><div class="paket-wisata-item">
           <img src="parkiran.jpg" alt="Paket Wisata 2">
-          <h3>Parkiran</h3>
-          <p>Charity untuk Parkiran Yayasan adalah inisiatif yang menyediakan fasilitas parkir aman dan nyaman bagi yayasan amal. Dengan menerima donasi dan sumbangan material, program ini meningkatkan aksesibilitas, keamanan kendaraan, dan mendukung operasional yayasan, sehingga memperluas dampak sosialnya.</p>
-          <a href="parkiran.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
-        <div class="paket-wisata-item">
+          <h3>Parkir Aman untuk Yayasan: Donasi Anda, Dampak Sosial Luas!</h3>
+          <p style="margin-top: 40px;">Total Donasi : Rp. <?= $parkiranTotal ?></p>
+        </div></a>
+        <a href="taman.php"><div class="paket-wisata-item">
           <img src="navbar.jpg" alt="Paket Wisata 4">
-          <h3>Taman</h3>
-          <p>Charity untuk Taman Yayasan adalah inisiatif yang menciptakan dan merawat taman di yayasan amal. Program ini menerima donasi uang, tanaman, dan material taman, serta sukarelawan untuk membantu penanaman dan pemeliharaan, menyediakan ruang hijau sehat dan tempat rekreasi bagi komunitas yayasan.</p>
-          <a href="taman.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
-        <div class="paket-wisata-item">
+          <h3>Donasi Taman Yayasan: Hijaukan Yayasan, Sehatkan Komunitas Bersama!</h3>
+          <p style="margin-top: 20px;">Total Donasi : Rp. <?= $tamanTotal ?></p>
+        </div></a>
+        <a href="dapur.php"><div class="paket-wisata-item">
           <img src="dapur.jpg" alt="Paket Wisata 5">
-          <h3>Dapur</h3>
-          <p>Charity untuk Dapur Yayasan mendukung pembangunan dan perawatan dapur di yayasan amal melalui donasi uang, peralatan dapur, bahan makanan, dan bantuan sukarelawan. Tujuannya adalah menyediakan makanan sehat bagi penerima manfaat, meningkatkan kesejahteraan mereka, dan mendukung operasional yayasan dalam melayani komunitas.</p>
-          <a href="dapur.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
+          <h3>Donasi Dapur Yayasan: Sumbang Peralatan, Bantu Makanan Sehat untuk Komunitas!</h3>
+          <p style="margin-top: 20px;">Total Donasi : Rp. <?= $dapurTotal ?></p>
+        </div></a>
       </div>
     </selection>
     <selection class="paket-wisata">
       <div class="paket-wisata-container">
-        <div class="paket-wisata-item">
+      <a href="perpustakaan.php"><div class="paket-wisata-item">
           <img src="perpustakaan.jpeg" alt="Paket Wisata 5">
-          <h3>Perpustakaan</h3>
-          <p>Charity untuk Perpustakaan Yayasan mendukung akses literasi dan pengetahuan dengan menerima donasi uang, buku, peralatan perpustakaan, dan bantuan sukarelawan. Tujuannya adalah meningkatkan literasi, pendidikan, dan pengetahuan anggota komunitas yang dilayani oleh yayasan, serta memberikan sumber daya yang diperlukan untuk pertumbuhan intelektual dan pribadi mereka.</p>
-          <a href="perpustakaan.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
-        <div class="paket-wisata-item">
+          <h3>Donasi Perpustakaan Yayasan: Sumbang Buku, Tingkatkan Literasi dan Pengetahuan Komunitas!</h3>
+          <p style="margin-top: 20px;">Total Donasi : Rp. <?= $perpustakaanTotal ?></p>
+        </div></a>
+        <a href="fasilitas.php"><div class="paket-wisata-item">
           <img src="fasilitas.jpg" alt="Paket Wisata 5">
-          <h3>Fasilitas</h3>
-          <p>Charity untuk Fasilitas Yayasan adalah inisiatif untuk meningkatkan infrastruktur dan fasilitas yayasan amal melalui donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperbaiki layanan, meningkatkan keselamatan, memudahkan akses, mengembangkan kapasitas yayasan, dan mendorong keterlibatan komunitas dalam pembangunan dan pemeliharaan fasilitas.</p>
-          <a href="fasilitas.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
-        <div class="paket-wisata-item">
+          <h3>Donasi Fasilitas Yayasan: Tingkatkan Infrastruktur, Keselamatan, dan Akses bagi Komunitas!</h3>
+          <p style="margin-top: 20px;">Total Donasi : Rp. <?= $fasilitasTotal ?></p>
+        </div></a>
+        <a href="lantaidasar.php"><div class="paket-wisata-item">
           <img src="gudang.jpg" alt="Paket Wisata 5">
-          <h3>Lantai Dasar</h3>
-          <p>Charity untuk lantai dasar yayasan bertujuan memperkuat fondasi fisik dan operasional lembaga, meningkatkan fasilitas, dan menyediakan aksesibilitas yang lebih baik. Dukungan ini menciptakan lingkungan yang nyaman, meningkatkan kepercayaan donatur, dan memfasilitasi kegiatan sosial serta edukatif. Dengan memastikan keberlanjutan yayasan dan mendorong partisipasi masyarakat, inisiatif ini menjadi investasi jangka panjang bagi kesejahteraan komunitas.</p>
-          <a href="lantaidasar.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
+          <h3>Kuatkan Yayasan: Donasi Fondasi, Tingkatkan Akses, Perkuat Komunitas!</h3>
+          <p style="margin-top: 40px;">Total Donasi : Rp. <?= $lantaidasarTotal ?></p>
+        </div></a>
       </div>
     </selection>
     <selection class="paket-wisata">
       <div class="paket-wisata-container">
-        <div class="paket-wisata-item">
+      <a href="asrama1.php"><div class="paket-wisata-item">
           <img src="gudang.jpg" alt="Paket Wisata 5">
-          <h3>Asrama 1</h3>
-          <p>Charity untuk asrama yayasan menyediakan tempat tinggal aman dan nyaman bagi yang membutuhkan, dengan donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperluas kapasitas asrama, meningkatkan kualitas hidup penghuni, dan memberikan lingkungan yang mendukung pertumbuhan pribadi. Ini memberikan harapan dan kesempatan untuk memulai kembali dengan lebih baik.</p>
-          <a href="asrama1.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
-        <div class="paket-wisata-item">
+          <h3>Asrama 1 Yayasan: Donasi, Tempat Aman, Kesempatan Baru!</h3>
+          <p style="margin-top: 40px;">Total Donasi : Rp. <?= $asrama1Total ?></p>
+        </div></a>
+        <a href="asrama2.php"><div class="paket-wisata-item">
           <img src="gudang.jpg" alt="Paket Wisata 5">
-          <h3>Asrama 2</h3>
-          <p>Charity untuk asrama yayasan menyediakan tempat tinggal aman dan nyaman bagi yang membutuhkan, dengan donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperluas kapasitas asrama, meningkatkan kualitas hidup penghuni, dan memberikan lingkungan yang mendukung pertumbuhan pribadi. Ini memberikan harapan dan kesempatan untuk memulai kembali dengan lebih baik.</p>
-          <a href="asrama2.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
-        <div class="paket-wisata-item">
+          <h3>Asrama 2 Yayasan: Donasi, Tempat Aman, Kesempatan Baru!</h3>
+          <p style="margin-top: 40px;">Total Donasi : Rp. <?= $asrama2Total ?></p>
+        </div></a>
+        <a href="asrama3.php"><div class="paket-wisata-item">
           <img src="gudang.jpg" alt="Paket Wisata 5">
-          <h3>Asrama 3</h3>
-          <p>Charity untuk asrama yayasan menyediakan tempat tinggal aman dan nyaman bagi yang membutuhkan, dengan donasi uang, peralatan, dan bantuan sukarelawan. Tujuannya adalah memperluas kapasitas asrama, meningkatkan kualitas hidup penghuni, dan memberikan lingkungan yang mendukung pertumbuhan pribadi. Ini memberikan harapan dan kesempatan untuk memulai kembali dengan lebih baik.</p>
-          <a href="asrama3.php" class="btn btn-primary">Donasi Sekarang</a>
-        </div>
+          <h3>Asrama 3 Yayasan: Donasi, Tempat Aman, Kesempatan Baru!</h3>
+          <p style="margin-top: 40px;">Total Donasi : Rp. <?= $asrama3Total ?></p>
+        </div></a>
       </div>
     </selection>
   </main>
+  <footer>
+    <div class="footercontainer">
+
+      <div class="footernav">
+        <ul>
+          <li><a href="informasi.php">Informasi</a></li>
+          <?php
+                if(isset($_SESSION['login']) && $_SESSION['login'] == true || isset($_SESSION['admin']) && $_SESSION['admin'] == true ) : 
+                ?>
+                <li><a href="logout.php">Logout</a></li>
+              <?php else: ?>
+                <li><a href="login.php">Login</a></li>
+              <?php endif; ?>
+          <li><a href="beranda.php">Beranda</a></li>
+        </ul>
+      </div>  
+      <div class="ikonsosmed">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footerbottom">
+      <p>Copyright &copy;2024; Designed by <span class="designer">Vatika Yayasan</span></p>
+    </div>
+    <div style="margin-top: -245px;">
+    <img src="tako0.png" width="300px" height="270px" style="margin-left: 200px;">
+    </div><div style="margin-top: -275px;">
+    <img src="tako1.png" width="300px" height="270px" style="margin-left: 1100px;">
+    </div>
+    </footer>
+
 </body>
 
 </html>

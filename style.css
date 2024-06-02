@@ -1,8 +1,14 @@
 /* footer index dll */
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Boboto', sans-serif;
+}
 footer{
     background-color: #101820;
     border-top: 1px solid darkslategray;
     color: white;
+    margin-top: 50px;
 }
 .footercontainer{
     width: 100%;
