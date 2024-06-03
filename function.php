@@ -117,6 +117,19 @@ if (!function_exists('hapus')) {
         }
     }
 }
+if (!function_exists('delete')){
+    function delete($id){
+        global $conn;
+        $query = "DELETE FROM user WHERE id = ?";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        if (mysqli_stmt_execute($stmt)) {
+            return mysqli_affected_rows($conn);
+        } else {
+            return -1;
+        }
+    }
+}
 
 if (!function_exists('registrasi')) {
     function registrasi($data) {

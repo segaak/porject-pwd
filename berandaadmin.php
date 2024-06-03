@@ -53,7 +53,26 @@ $fasilitas = query("SELECT * FROM donasi WHERE tujuan = 'fasilitas'");
 $lantaidasar = query("SELECT * FROM donasi WHERE tujuan = 'lantai dasar'");
 $parkiran = query("SELECT * FROM donasi WHERE tujuan = 'parkiran'");
 $perpustakaan = query("SELECT * FROM donasi WHERE tujuan = 'perpustakaan'");
-$taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
+$taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'"); 
+
+function searchDonasi($keyword) {
+    global $conn;
+    $query = "SELECT * FROM donasi WHERE 
+              nama LIKE '%$keyword%' OR 
+              tujuan LIKE '%$keyword%' OR 
+              metode LIKE '%$keyword%'";
+    return mysqli_query($conn, $query);
+}
+
+$keyword = '';
+if (isset($_POST['search'])) {
+    $keyword = $_POST['keyword'];
+    $searchResult = searchDonasi($keyword);
+}
+
+function formatRupiah($angka) {
+    return 'Rp' . number_format($angka, 0, ',', '.');
+}
 ?>
 
 <!DOCTYPE html>
@@ -204,6 +223,11 @@ main {
         .table-container {
             margin-top: 2rem;
         }
+        .sidebar .sidebar-menu a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+    display: block; /* Make the links fill the list item */
+}
 
 
     </style>
@@ -230,8 +254,10 @@ main {
         <header class="flex">
             <h2><i class="uil uil-bars" id="menu-icon"></i>Total Donasi</h2>
             <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search Here...">
+            <form method="post" action="">
+    <input type="text" name="keyword" placeholder="Cari donasi..." value="<?php echo $keyword; ?>">
+    <button type="submit" name="search">Cari</button>
+</form>
             </div>
             <div class="admin-box flex">
                 <div>
@@ -241,7 +267,28 @@ main {
             </div>
         </header>
 
-  
+  <?php
+if (isset($searchResult)) {
+    echo "<table class='table table-dark table-striped' style: margin-top: 20px>";
+    echo "<thead><tr><th>Nama</th><th>Telepon</th><th>Alamat</th><th>Kota</th><th>Provinsi</th><th>Kode Pos</th><th>Jumlah</th><th>Metode Pembayaran</th><th>Tujuan</th><th>Aksi</th></tr></thead>";
+    echo "<tbody>";
+    while ($row = mysqli_fetch_assoc($searchResult)) {
+        echo "<tr>";
+        echo "<td>{$row['nama']}</td>";
+        echo "<td>{$row['telepon']}</td>";
+        echo "<td>{$row['alamat']}</td>";
+        echo "<td>{$row['kota']}</td>";
+        echo "<td>{$row['provinsi']}</td>";
+        echo "<td>{$row['pos']}</td>";
+        echo "<td>{$row['jumlah']}</td>";
+        echo "<td>{$row['metode']}</td>";
+        echo "<td>{$row['tujuan']}</td>";
+        echo "<td><a href='update.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a> <a href='hapus.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Apakah anda yakin ingin menghapus data ini?')\">Hapus</a></td>";
+        echo "</tr>";
+    }
+    echo "</tbody></table>";
+}
+?>
     <div class="chart">
         <script>
             // Sidebar Toggle
@@ -321,7 +368,7 @@ main {
         function showUser() {
             // Implementasi untuk menampilkan konten user
         }
-        </script> -->
+        </script> 
         
         <main class="container">
         <div class="cards">
@@ -380,7 +427,7 @@ main {
                         <td>{$row['kota']}</td>
                         <td>{$row['provinsi']}</td>
                         <td>{$row['pos']}</td>
-                        <td>{$row['jumlah']}</td>
+                        <td>". formatRupiah($row['jumlah'])."</td>
                         <td>{$row['metode']}</td>
                         <td>{$row['tujuan']}</td>
                         <td>
@@ -447,6 +494,7 @@ main {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </div>
+
 </body>
 
 </html>

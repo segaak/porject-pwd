@@ -71,7 +71,7 @@ if(isset($_POST['perbarui'])){
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            /* overflow: hidden; */
             background-color: #101820;
             color: white;
         }
@@ -159,7 +159,6 @@ if(isset($_POST['perbarui'])){
             margin-top: 5px;
             box-sizing: border-box;
         }
-
         button[type="submit"] {
             width: 100%;
             height: 60px;
@@ -277,9 +276,9 @@ if(isset($_POST['perbarui'])){
             <button type="submit" name="perbarui">Perbarui</button>
         </form>
     </div>
-    <footer>
-    <div class="footercontainer">
 
+    <footer style="margin-top: 450px;">
+    <div class="footercontainer">
       <div class="footernav">
         <ul>
           <li><a href="informasi.php">Informasi</a></li>

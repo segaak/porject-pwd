@@ -10,7 +10,7 @@ if (isset($_POST["tambah"])) {
     } if (tambah($_POST) > 0) {
         echo "<script>
         alert('Data berhasil ditambahkan!');
-        document.location.href = 'asrama2.php';
+        document.location.href = 'donasi.php';
         </script>";
       } else {
           echo "<script>
@@ -20,7 +20,6 @@ if (isset($_POST["tambah"])) {
   }
 require 'function.php';
 
-$asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +33,14 @@ $asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+   
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
         }
 
         body {
@@ -180,25 +182,54 @@ $asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
       margin-left: 200px;
       margin-top: 60px;
     }
+/* General navigation styles */
+.navigasi ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
 
-    .pilih {
-      list-style-type: none;
-      display: flex;
-    }
+.navigasi li {
+    margin-right: 20px;
+}
 
-    .pilih li {
-      margin: 0 1rem;
-    }
+.navigasi a {
+    text-decoration: none;
+    color: white; /* Default color */
+    padding: 10px;
+    position: relative;
+    transition: color 0.3s;
+}
 
-    .pilih li a {
-      text-decoration: none;
-      color: #ffffff;
-      transition: color 0.3s ease;
-    }
+/* Style for active link */
+.navigasi a.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
 
-    .pilih li a:hover {
-      color: #ffcc00;
-    }
+/* Hover effect */
+.navigasi a:hover {
+    color: blue;
+}
+
+.navigasi a:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
         header.atas {
             box-shadow: 0 0 8px darkslategray;
             background: url(navbar.jpg) center/cover no-repeat;
@@ -311,34 +342,7 @@ $asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
             text-align: justify;
         }
 
-        /* .mx-auto {
-            width: 1160px;
-            box-shadow: 0 0 8px darkslategray;
-            background-color: #101820;
-            border-radius: 10px;
-        }
-
-        .card {
-            margin-top: 10px;
-        }
-
-        h1 {
-            width: 800px;
-        }
-
-        .form-label {
-            margin-bottom: 0;
-            padding-right: 5px;
-        }
-        .form-control {
-            background-color: #28353a;
-            color: white;
-            border: none;
-        }
-        .custom-card {
-            background-color: #101820;
-            color: white;
-        } */
+    
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -547,103 +551,17 @@ $asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
 
   <nav>
     <div class="navigasi">
-      <ul class="pilih">
-        <li><a href="beranda.php">Beranda</a></li>
-        <li><a href="informasi.php">Informasi</a></li>
-        <li><a href="donasi.php">Donasi</a></li>
-        <?php
-        if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) : ?>
-          <li><a href="berandaadmin.php">Admin</a></li>
-        <?php endif; ?>
-      </ul>
+        <ul class="pilih">
+            <li><a href="beranda.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'beranda.php' ? 'active' : '' ?>">Beranda</a></li>
+            <li><a href="informasi.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'informasi.php' ? 'active' : '' ?>">Informasi</a></li>
+            <li><a href="donasi.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'donasi.php' ? 'active' : '' ?>">Donasi</a></li>
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) : ?>
+                <li><a href="berandaadmin.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'berandaadmin.php' ? 'active' : '' ?>">Admin</a></li>
+            <?php endif; ?>
+        </ul>
     </div>
-  </nav>
+</nav>
 
-    <!-- <div class="text-center" style="text-decoration: none;">
-
-
-        <main>
-        <div class="mx-auto">
-    <div class="card custom-card">
-        <div class="card-header text-start" style="padding: 15px">
-            Input Data Donasi
-        </div>
-        <div class="card-body">
-            <form action="" method="post">
-                <div class="mb-3 row">
-                    <label for="nama" class="col-sm-2 col-form-label text-start form-label">Nama Donatur</label>
-                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nama" name="nama" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="telepon" class="col-sm-2 col-form-label text-start form-label">No.Telepon</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="telepon" name="telepon" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="alamat" class="col-sm-2 col-form-label text-start form-label">Alamat</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="alamat" name="alamat" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="kota" class="col-sm-2 col-form-label text-start form-label">Kota</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="kota" name="kota" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="provinsi" class="col-sm-2 col-form-label text-start form-label">Provinsi</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="provinsi" name="provinsi" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="pos" class="col-sm-2 col-form-label text-start form-label">Kode Pos</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pos" name="pos" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="jumlah" class="col-sm-2 col-form-label text-start form-label">Jumlah</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="jumlah" name="jumlah" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="metode" class="col-sm-2 col-form-label text-start form-label">Metode Pembayaran</label>
-                    <div class="col-sm-10">
-                        <select class="form-select form-control" id="metode" name="metode" required>
-                            <option value="">- Pilih Metode Pembayaran -</option>
-                            <option value="transferbank">Transfer Bank</option>
-                            <option value="kartukredit">Kartu Kredit/Debit</option>
-                            <option value="paypal">PayPal</option>
-                            <option value="dompetdigital">Dompet Digital</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="informasi" class="col-sm-2 col-form-label text-start form-label">Informasi</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="informasi" name="informasi" required>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="catatan" class="col-sm-2 col-form-label text-start form-label">Catatan</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="catatan" name="catatan" required>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
-                </div>
-            </form>
-        </div>
-    </div>
-</div> 
-</main>-->
 <div class="container">
    
     
@@ -705,9 +623,9 @@ $asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
                 <label for="tujuan" class="col-sm-2 col-form-label text-start form-label">Tujuan</label>
                 <select class="form-select form-control" id="tujuan" name="tujuan" required>
                         <option value="">- Pilih Tujuan Pembayaran -</option>
-                        <option value="Asrama 1">Asrama 1</option>
-                        <option value="Asrama 2">Asrama 2</option>
-                        <option value="Asrama 3">Asrama 3</option>
+                        <option value="Asrama 1">Asrama1</option>
+                        <option value="Asrama 2">Asrama2</option>
+                        <option value="Asrama 3">Asrama3</option>
                         <option value="Dapur">Dapur</option>
                         <option value="Fasilitas">Fasilitas</option>
                         <option value="Lantai Dasar">Lantai Dasar</option>
@@ -730,7 +648,6 @@ $asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
 
 <footer>
     <div class="footercontainer">
-
       <div class="footernav">
         <ul>
           <li><a href="informasi.php">Informasi</a></li>
@@ -760,7 +677,6 @@ $asrama1 = query("SELECT * FROM donasi WHERE tujuan = 'asrama1'");
     <img src="tako1.png" width="300px" height="270px" style="margin-left: 1100px;">
     </div>
     </footer>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

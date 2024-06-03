@@ -265,6 +265,51 @@ if (isset($_POST["login"])) {
         .pilihan {
             margin-top: 24rem;
         }
+        .txt_field {
+            margin-bottom: 15px;
+        }
+
+        .txt_field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .txt_field input,
+        .txt_field select,
+        .txt_field textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: none;
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .txt_field input:focus,
+        .txt_field select:focus,
+        .txt_field textarea:focus {
+            
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .txt_field input:disabled,
+        .txt_field textarea:disabled {
+            background-color: #4d4d4d;
+        }
+
+        .btn {
+            background-color: #ffcc00;
+            color: #101820;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e6b800;
+        }
     </style>
 </head>
 

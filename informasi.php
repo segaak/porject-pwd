@@ -2,7 +2,17 @@
 session_start();
 
 require 'function.php';
-
+function getTotalUser()
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM user");
+    if (!$result) {
+        die("Query Error: " . mysqli_error($conn));
+    }
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
+}
+$totalUser = getTotalUser();
 ?>
 
 <!DOCTYPE html>
@@ -202,28 +212,63 @@ header::before {
 }
 
 .navigasi {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin-left: 200px;
-  margin-top: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin-left: 240px;
+      margin-top: 60px;
+    }
+
+
+/* General navigation styles */
+.navigasi ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
-.pilih {
-  list-style-type: none;
-  display: flex;
+
+.navigasi li {
+    margin-right: 20px;
 }
-.pilih li {
-  margin: 0 1rem;
+
+.navigasi a {
+    text-decoration: none;
+    color: white; /* Default color */
+    padding: 10px;
+    position: relative;
+    transition: color 0.3s;
 }
-.pilih li a {
-  text-decoration: none;
-  color: #ffffff;
-  transition: color 0.3s ease;
+
+/* Style for active link */
+.navigasi a.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
-.pilih li a:hover {
-  color: #ffcc00;
+
+/* Hover effect */
+.navigasi a:hover {
+    color: blue;
 }
+
+.navigasi a:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
 .container {
   margin: 0 auto;
   padding: 20px;
@@ -237,6 +282,16 @@ header::before {
   object-fit: cover;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+.single-card {
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 </style>
 </head>
@@ -312,20 +367,19 @@ header::before {
       <label for="t-9"></label>
     </div>
   </div>
-    
-    <nav>
-        <div class="navigasi">
-            <ul class="pilih">
-                <li><a href="beranda.php">Beranda</a></li>
-                <li><a href="informasi.php">Informasi</a></li>
-                <li><a href="donasi.php">Donasi</a></li>
-                <?php
-                if(isset($_SESSION['admin']) && $_SESSION['admin'] == true): ?>
-                <li><a href="berandaadmin.php">Admin</a></li>
-              <?php endif; ?>
-            </ul>
-        </div>
-    </nav>
+  <nav>
+    <div class="navigasi">
+        <ul class="pilih">
+            <li><a href="beranda.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'beranda.php' ? 'active' : '' ?>">Beranda</a></li>
+            <li><a href="informasi.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'informasi.php' ? 'active' : '' ?>">Informasi</a></li>
+            <li><a href="donasi.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'donasi.php' ? 'active' : '' ?>">Donasi</a></li>
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) : ?>
+                <li><a href="berandaadmin.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'berandaadmin.php' ? 'active' : '' ?>">Admin</a></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+</nav>
+
 
 <main>
     <div class="container">
@@ -341,6 +395,10 @@ header::before {
                 <p>
                 Terima kasih kepada calon jutaan orang baik yang telah memberikan kepercayaan Vatika Yayasan untuk memfasilitasi :
                 </p>
+                <div class="single-card">
+                    <div><span>TOTAL USER</span><h2><?php echo $totalUser; ?></h2></div>
+                    <i class="uil uil-users-alt"></i>
+                </div>
             </div>
         </div>
     </div>

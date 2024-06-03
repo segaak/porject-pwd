@@ -242,24 +242,54 @@ header::before {
       margin-top: 60px;
     }
 
-    .pilih {
-      list-style-type: none;
-      display: flex;
-    }
+   
+.navigasi ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
 
-    .pilih li {
-      margin: 0 1rem;
-    }
+.navigasi li {
+    margin-right: 20px;
+}
 
-    .pilih li a {
-      text-decoration: none;
-      color: #ffffff;
-      transition: color 0.3s ease;
-    }
+.navigasi a {
+    text-decoration: none;
+    color: white; 
+    padding: 10px;
+    position: relative;
+    transition: color 0.3s;
+}
 
-    .pilih li a:hover {
-      color: #ffcc00;
-    }
+
+.navigasi a.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+
+.navigasi a:hover {
+    color: blue;
+}
+
+.navigasi a:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
 
     main {
       max-width: 1200px;
@@ -312,7 +342,15 @@ header::before {
       text-align: justify;
       color: white;
     }
-   
+    .paket-wisata-item a {
+      text-decoration: none;
+    }
+    .paket-wisata .paket-wisata-container a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+    display: block; /* Make the links fill the item */
+}
+
   </style>
 </head>
 
@@ -391,19 +429,19 @@ header::before {
   </div>
 
     
-    <nav>
+  <nav>
     <div class="navigasi">
-      <ul class="pilih">
-        <li><a href="beranda.php">Beranda</a></li>
-        <li><a href="informasi.php">Informasi</a></li>
-        <li><a href="donasi.php">Donasi</a></li>
-        <?php
-        if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) : ?>
-          <li><a href="berandaadmin.php">Admin</a></li>
-        <?php endif; ?>
-      </ul>
+        <ul class="pilih">
+            <li><a href="beranda.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'beranda.php' ? 'active' : '' ?>">Beranda</a></li>
+            <li><a href="informasi.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'informasi.php' ? 'active' : '' ?>">Informasi</a></li>
+            <li><a href="donasi.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'donasi.php' ? 'active' : '' ?>">Donasi</a></li>
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) : ?>
+                <li><a href="berandaadmin.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'berandaadmin.php' ? 'active' : '' ?>">Admin</a></li>
+            <?php endif; ?>
+        </ul>
     </div>
-  </nav>
+</nav>
+
   <main>
     <selection class="paket-wisata">
       <div class="paket-wisata-container">

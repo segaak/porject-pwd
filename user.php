@@ -73,6 +73,8 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
      background-color: #101820;
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    list-style: none;
     
 }
 
@@ -118,6 +120,7 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
     color: white;
     text-decoration: none;
     align-items: center;
+    
 }
 
 .sidebar-menu ul li:hover {
@@ -204,6 +207,13 @@ main {
         .table-container {
             margin-top: 2rem;
         }
+        
+        .sidebar .sidebar-menu a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+    display: block; /* Make the links fill the list item */
+  
+}
 
 
     </style>
@@ -243,118 +253,40 @@ main {
 
   
     <div class="chart">
-
-        
         <main class="container">
-
         <div class="table-container">
-            <?php
-            $tables = [
-                'asrama1' => $asrama1,
-                'asrama2' => $asrama2,
-                'asrama3' => $asrama3,
-                'dapur' => $dapur,
-                'fasilitas' => $fasilitas,
-                'lantai dasar' => $lantaidasar,
-                'parkiran' => $parkiran,
-                'perpustakaan' => $perpustakaan,
-                'taman' => $taman
-            ];
-
-            foreach ($tables as $title => $table) {
-                echo "<div class='table-responsive'>
-                <h2 class='text-center'>Donasi untuk $title</h2>
-                <table class='table table-dark table-striped'>
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Telepon</th>
-                            <th>Alamat</th>
-                            <th>Kota</th>
-                            <th>Provinsi</th>
-                            <th>Kode Pos</th>
-                            <th>Jumlah</th>
-                            <th>Metode Pembayaran</th>
-                            <th>Tujuan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>";
-
-                foreach ($table as $row) {
-                    echo "<tr>
-                        <td>{$row['nama']}</td>
-                        <td>{$row['telepon']}</td>
-                        <td>{$row['alamat']}</td>
-                        <td>{$row['kota']}</td>
-                        <td>{$row['provinsi']}</td>
-                        <td>{$row['pos']}</td>
-                        <td>{$row['jumlah']}</td>
-                        <td>{$row['metode']}</td>
-                        <td>{$row['tujuan']}</td>
-                        <td>
-                            <a href='update.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
-                            <a href='hapus.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Apakah anda yakin ingin menghapus data ini?')\">Hapus</a>
-                        </td>
-                    </tr>";
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>username</th>
+                    <th>Password</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $users = query("SELECT * FROM user");
+                $no = 1;
+                foreach ($users as $user) {
+                    echo "<tr>";
+                    echo "<td>" . $no++ . "</td>";
+                    echo "<td>" . $user['username'] . "</td>";
+                    echo "<td>" . $user['password'] . "</td>";
+                    echo "<td>
+                    <a href='hapus.php?id={$user['id']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Apakah anda yakin ingin menghapus data ini?')\">Hapus</a>
+                      </td>
+                     </tr>";
                 }
 
-                echo "</tbody>
-                </table>
-                </div>";
-            }
-            ?>
+                ?>
+
+            </tbody>
+        </table>
         </div>
     </main>
 
-    <script>
-        var donasiData = {
-            labels: ['Asrama1', 'Asrama2', 'Asrama3', 'Dapur', 'Fasilitas', 'Lantai Dasar', 'Parkiran', 'Perpustakaan', 'Taman'],
-            datasets: [{
-                label: 'Total Nominal Donasi (Rupiah)',
-                data: [
-                    <?php
-                    echo $asrama1Total . ", ";
-                    echo $asrama2Total . ", ";
-                    echo $asrama3Total . ", ";
-                    echo $dapurTotal . ", ";
-                    echo $fasilitasTotal . ", ";
-                    echo $lantaidasarTotal . ", ";
-                    echo $parkiranTotal . ", ";
-                    echo $perpustakaanTotal . ", ";
-                    echo $tamanTotal;
-                    ?>
-                ],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        };
-
-        var chartOptions = {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return 'Rp ' + value.toLocaleString();
-                        }
-                    }
-                }
-            }
-        };
-
-        var ctx = document.getElementById('donationChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: donasiData,
-            options: chartOptions
-        });
-       
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+        
 </div>
 </body>
 

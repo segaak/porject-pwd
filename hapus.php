@@ -11,14 +11,29 @@ if (hapus($id) > 0) {
     echo "
         <script>
             alert('Data berhasil dihapus!');
-            document.location.href = 'ujicoba.php';
+            document.location.href = 'berandaadmin.php';
         </script>
     ";
 } else {
     echo "
         <script>
             alert('Data gagal dihapus!');
-            document.location.href = 'ujicoba.php';
+            document.location.href = 'berandaadmin.php';
+        </script>
+    ";
+}
+if (delete($id) > 0) {
+    echo "
+        <script>
+            alert('Data berhasil dihapus!');
+            document.location.href = 'berandaadmin.php';
+        </script>
+    ";
+} else {
+    echo "
+        <script>
+            alert('Data gagal dihapus!');
+            document.location.href = 'berandaadmin.php';
         </script>
     ";
 }
