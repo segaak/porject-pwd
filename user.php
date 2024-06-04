@@ -56,6 +56,7 @@ $perpustakaan = query("SELECT * FROM donasi WHERE tujuan = 'perpustakaan'");
 $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,14 +69,16 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <style>
+    
+
         body {
-    font-family: Arial, sans-serif;
+ 
      background-color: #101820;
     margin: 0;
     padding: 0;
     text-decoration: none;
     list-style: none;
-    
+    color: white;
 }
 
 .sidebar {
@@ -120,7 +123,6 @@ $taman = query("SELECT * FROM donasi WHERE tujuan = 'taman'");
     color: white;
     text-decoration: none;
     align-items: center;
-    
 }
 
 .sidebar-menu ul li:hover {
@@ -214,7 +216,25 @@ main {
     display: block; /* Make the links fill the list item */
   
 }
-
+.chart {
+    
+    background-color: #2e2e2e;
+    
+}
+.table{
+    background-color: #2e2e2e;
+}
+.table {
+            background-color: #2e2e2e;
+            color: #fff; /* Optional: To make text readable */
+        }
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .table-container {
+            overflow-x: auto; /* Optional: To make the table responsive */
+        }
 
     </style>
 </head>
@@ -255,38 +275,36 @@ main {
     <div class="chart">
         <main class="container">
         <div class="table-container">
-        <table class="table">
+        <table class="table table-dark">
+        <table class='table table-dark table-striped'>
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>username</th>
+                    <th>Username</th>
                     <th>Password</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                 </tr>
-            </thead>
-            <tbody>
-                <?php
-                $users = query("SELECT * FROM user");
-                $no = 1;
-                foreach ($users as $user) {
-                    echo "<tr>";
-                    echo "<td>" . $no++ . "</td>";
-                    echo "<td>" . $user['username'] . "</td>";
-                    echo "<td>" . $user['password'] . "</td>";
-                    echo "<td>
-                    <a href='hapus.php?id={$user['id']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Apakah anda yakin ingin menghapus data ini?')\">Hapus</a>
-                      </td>
-                     </tr>";
-                }
-
+                <tbody>
+                    
+                <?php 
+                $user = query("SELECT * FROM user");
+                $i = 1; 
                 ?>
-
-            </tbody>
+                    <?php foreach ($user as $users) : ?>
+                        <tr>
+                            <td><?= $i++; ?></td>
+                            <td><?= $users['username']; ?></td>
+                            <td><?= $users['password']; ?></td>
+                            <td>
+                                <a href="hapus.php?id=<?= $users['id']; ?>"  class='btn btn-danger btn-sm' onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </thead>
         </table>
         </div>
-    </main>
-
-        
+    </main> 
 </div>
 </body>
 

@@ -51,6 +51,11 @@ if (isset($_POST["update"])) {
     color: #fff;
     transition: width 0.5s;
 }
+.sidebar-menu ul li a{
+    color: white;
+    text-decoration: none;
+    align-items: center;
+}
 
 .sidebar .adminlogo h2 {
     margin: 0;
@@ -79,7 +84,7 @@ if (isset($_POST["update"])) {
 
 }
 .sidebar-menu ul li a{
-    color: darkblue;
+    color: white;
     text-decoration: none;
     align-items: center;
 }
@@ -168,6 +173,38 @@ main {
         .table-container {
             margin-top: 2rem;
         }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: none;
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .form-group input:disabled,
+        .form-group textarea:disabled {
+            background-color: #4d4d4d;
+        }
 
 
     </style>
@@ -182,9 +219,9 @@ main {
         </div>
         <div class="sidebar-menu">
             <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Admin</a></li>
-                <li><a href="#"> User </a></li>
+                <li><a href="beranda.php">Beranda</a></li>
+                <li><a href="berandaadmin.php">Total Donasi</a></li>
+                <li><a href="user.php"> Daftar Pengguna </a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -193,10 +230,7 @@ main {
     <div class="main-content" id="main-content">
         <header class="flex">
             <h2><i class="uil uil-bars" id="menu-icon"></i>Dashboard</h2>
-            <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search Here...">
-            </div>
+            
             <div class="admin-box flex">
                 <div>
                     <h4>Admin</h4>
@@ -248,7 +282,7 @@ main {
                         </select>
     </div>
     <div class="form-group">
-    <label for="Tujuan" ></label>
+    <label for="Tujuan" >Tujuan</label>
                     
                     <select class="form-select form-control" id="tujuan" name="tujuan" required>
                         <option value="<?= htmlspecialchars($charity["tujuan"])?>"><?= htmlspecialchars($charity["tujuan"])?></option>

@@ -2,6 +2,22 @@
 session_start();
 
 require 'function.php';
+function getTotalNominal($tujuan) {
+  global $conn;
+  $result = mysqli_query($conn, "SELECT SUM(jumlah) AS total FROM donasi WHERE tujuan = '$tujuan'");
+  $row = mysqli_fetch_assoc($result);
+  return $row['total'];
+}
+$asrama1Total = getTotalNominal('asrama1');
+$asrama2Total = getTotalNominal('asrama2');
+$asrama3Total = getTotalNominal('asrama3');
+$dapurTotal = getTotalNominal('dapur');
+$fasilitasTotal = getTotalNominal('fasilitas');
+$lantaidasarTotal = getTotalNominal('lantai dasar');
+$parkiranTotal = getTotalNominal('parkiran');
+$perpustakaanTotal = getTotalNominal('perpustakaan');
+$tamanTotal = getTotalNominal('taman');
+
 function getTotalUser()
 {
     global $conn;
@@ -12,6 +28,7 @@ function getTotalUser()
     $row = mysqli_fetch_assoc($result);
     return $row['total'];
 }
+$totalDonasi = $asrama1Total + $asrama2Total + $asrama3Total + $dapurTotal + $fasilitasTotal + $lantaidasarTotal + $parkiranTotal + $perpustakaanTotal + $tamanTotal;
 $totalUser = getTotalUser();
 ?>
 
@@ -283,15 +300,21 @@ header::before {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+.cards {
+    display: flex;
+    /* justify-content: space-between; */
+}
 .single-card {
     background-color: #333;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 20%;
+    width: 30%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    margin-right: 20px;
+
 }
 </style>
 </head>
@@ -334,25 +357,25 @@ header::before {
         <img src="fasilitas.jpg" alt="">
       </label>
       <label for="t-3" class="item">
-        <img src="parkiran.jpg" alt="">
+        <img src="parkiran1.jpg" alt="">
       </label>
       <label for="t-4" class="item">
-        <img src="perpustakaan.jpeg" alt="">
+        <img src="perpustakaan1.jpg" alt="">
       </label>
       <label for="t-5" class="item">
-        <h1>5</h1>
+        <img src="lantaidasar.jpg" alt="" srcset="">
       </label>
       <label for="t-6" class="item">
-        <h1>6</h1>
+        <img src="asrama1.jpg" alt="" srcset="">
       </label>
       <label for="t-7" class="item">
-        <h1>7</h1>
+        <img src="asrama2.jpg" alt="" srcset="">
       </label>
       <label for="t-8" class="item">
-        <h1>8</h1>
+        <img src="asrama3.jpg" alt="" srcset="">
       </label>
       <label for="t-9" class="item">
-        <h1>9</h1>
+        <img src="navbar.jpg" alt="" srcset="">
       </label>
     </div>
     <div class="dots">
@@ -395,10 +418,16 @@ header::before {
                 <p>
                 Terima kasih kepada calon jutaan orang baik yang telah memberikan kepercayaan Vatika Yayasan untuk memfasilitasi :
                 </p>
+                <div class="cards">
+                <div class="single-card">
+                    <div><span>TOTAL DONASI</span><h2>Rp<?php echo number_format($totalDonasi, 0, ',', '.'); ?></h2></div>
+                    <i class="uil uil-calender"></i>
+                </div>
                 <div class="single-card">
                     <div><span>TOTAL USER</span><h2><?php echo $totalUser; ?></h2></div>
                     <i class="uil uil-users-alt"></i>
                 </div>
+            </div>
             </div>
         </div>
     </div>

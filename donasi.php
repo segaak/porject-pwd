@@ -44,7 +44,7 @@ require 'function.php';
         }
 
         body {
-            font-family: Arial, sans-serif;
+            /* font-family: Arial, sans-serif; */
             background-color: #101820;
             color: white;
         }
@@ -515,25 +515,25 @@ require 'function.php';
         <img src="fasilitas.jpg" alt="">
       </label>
       <label for="t-3" class="item">
-        <img src="parkiran.jpg" alt="">
+        <img src="parkiran1.jpg" alt="">
       </label>
       <label for="t-4" class="item">
-        <img src="perpustakaan.jpeg" alt="">
+        <img src="perpustakaan1.jpg" alt="">
       </label>
       <label for="t-5" class="item">
-        <h1>5</h1>
+        <img src="lantaidasar.jpg" alt="" srcset="">
       </label>
       <label for="t-6" class="item">
-        <h1>6</h1>
+        <img src="asrama1.jpg" alt="" srcset="">
       </label>
       <label for="t-7" class="item">
-        <h1>7</h1>
+        <img src="asrama2.jpg" alt="" srcset="">
       </label>
       <label for="t-8" class="item">
-        <h1>8</h1>
+        <img src="asrama3.jpg" alt="" srcset="">
       </label>
       <label for="t-9" class="item">
-        <h1>9</h1>
+        <img src="navbar.jpg" alt="" srcset="">
       </label>
     </div>
     <div class="dots">
@@ -562,51 +562,37 @@ require 'function.php';
     </div>
 </nav>
 
-<div class="container">
-   
-    
+<div class="container"> 
     <div class="content">
         <h2>donasikan sekarang</h2>
         <form action="" method="post">
         <div class="form-group">
                     <label for="nama" class="col-sm-2 col-form-label text-start form-label">Nama Donatur</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
-                    
                 </div>
                 <div class="form-group">
                     <label for="telepon" class="col-sm-2 col-form-label text-start form-label">No.Telepon</label>
                         <input type="text" class="form-control" id="telepon" name="telepon" required>
-                    
                 </div>
                 <div class="form-group">
                     <label for="alamat" class="col-sm-2 col-form-label text-start form-label">Alamat</label>
-                    
                         <input type="text" class="form-control" id="alamat" name="alamat" required>
-                   
                 </div>
                 <div class="form-group">
                     <label for="kota" class="col-sm-2 col-form-label text-start form-label">Kota</label>
-                    
                         <input type="text" class="form-control" id="kota" name="kota" required>
-                    
                 </div>
                 <div class="form-group">
                     <label for="provinsi" class="col-sm-2 col-form-label text-start form-label">Provinsi</label>
-                    
                         <input type="text" class="form-control" id="provinsi" name="provinsi" required>
-                    
                 </div>
                 <div class="form-group">
                     <label for="pos" class="col-sm-2 col-form-label text-start form-label">Kode Pos</label>
-                    
                         <input type="text" class="form-control" id="pos" name="pos" required>
-                
                 </div>
                 <div class="form-group">
                     <label for="jumlah" class="col-sm-2 col-form-label text-start form-label">Jumlah</label>
-                    
                         <input type="text" class="form-control" id="jumlah" name="jumlah" required>
-                    
                 </div>
                 <div class="form-group">
                     <label for="metode" class="col-sm-2 col-form-label text-start form-label">Metode Pembayaran</label>
@@ -636,9 +622,7 @@ require 'function.php';
                 </div>
                 <div class="form-group">
                     <label for="catatan" class="col-sm-2 col-form-label text-start form-label">Catatan</label>
-                    
                         <input type="text" class="form-control" id="catatan" name="catatan" required>
-                    
                 </div>
                     <input type="submit" name="tambah" value="Simpan Data" class="btn btn-primary">
                 

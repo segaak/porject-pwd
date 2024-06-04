@@ -394,25 +394,25 @@ header::before {
         <img src="fasilitas.jpg" alt="">
       </label>
       <label for="t-3" class="item">
-        <img src="parkiran.jpg" alt="">
+        <img src="parkiran1.jpg" alt="">
       </label>
       <label for="t-4" class="item">
-        <img src="perpustakaan.jpeg" alt="">
+        <img src="perpustakaan1.jpg" alt="">
       </label>
       <label for="t-5" class="item">
-        <h1>5</h1>
+        <img src="lantaidasar.jpg" alt="" srcset="">
       </label>
       <label for="t-6" class="item">
-        <h1>6</h1>
+        <img src="asrama1.jpg" alt="" srcset="">
       </label>
       <label for="t-7" class="item">
-        <h1>7</h1>
+        <img src="asrama2.jpg" alt="" srcset="">
       </label>
       <label for="t-8" class="item">
-        <h1>8</h1>
+        <img src="asrama3.jpg" alt="" srcset="">
       </label>
       <label for="t-9" class="item">
-        <h1>9</h1>
+        <img src="navbar.jpg" alt="" srcset="">
       </label>
     </div>
     <div class="dots">
@@ -446,7 +446,7 @@ header::before {
     <selection class="paket-wisata">
       <div class="paket-wisata-container">
       <a href="parkiran.php"><div class="paket-wisata-item">
-          <img src="parkiran.jpg" alt="Paket Wisata 2">
+          <img src="parkiran1.jpg" alt="Paket Wisata 2">
           <h3>Parkir Aman untuk Yayasan: Donasi Anda, Dampak Sosial Luas!</h3>
           <p style="margin-top: 40px;">Total Donasi : Rp. <?= $parkiranTotal ?></p>
         </div></a>
@@ -465,7 +465,7 @@ header::before {
     <selection class="paket-wisata">
       <div class="paket-wisata-container">
       <a href="perpustakaan.php"><div class="paket-wisata-item">
-          <img src="perpustakaan.jpeg" alt="Paket Wisata 5">
+          <img src="perpustakaan1.jpg" alt="Paket Wisata 5">
           <h3>Donasi Perpustakaan Yayasan: Sumbang Buku, Tingkatkan Literasi dan Pengetahuan Komunitas!</h3>
           <p style="margin-top: 20px;">Total Donasi : Rp. <?= $perpustakaanTotal ?></p>
         </div></a>
@@ -475,7 +475,7 @@ header::before {
           <p style="margin-top: 20px;">Total Donasi : Rp. <?= $fasilitasTotal ?></p>
         </div></a>
         <a href="lantaidasar.php"><div class="paket-wisata-item">
-          <img src="gudang.jpg" alt="Paket Wisata 5">
+          <img src="lantaidasar.jpg" alt="Paket Wisata 5">
           <h3>Kuatkan Yayasan: Donasi Fondasi, Tingkatkan Akses, Perkuat Komunitas!</h3>
           <p style="margin-top: 40px;">Total Donasi : Rp. <?= $lantaidasarTotal ?></p>
         </div></a>
@@ -484,17 +484,17 @@ header::before {
     <selection class="paket-wisata">
       <div class="paket-wisata-container">
       <a href="asrama1.php"><div class="paket-wisata-item">
-          <img src="gudang.jpg" alt="Paket Wisata 5">
+          <img src="asrama1.jpg" alt="Paket Wisata 5">
           <h3>Asrama 1 Yayasan: Donasi, Tempat Aman, Kesempatan Baru!</h3>
           <p style="margin-top: 40px;">Total Donasi : Rp. <?= $asrama1Total ?></p>
         </div></a>
         <a href="asrama2.php"><div class="paket-wisata-item">
-          <img src="gudang.jpg" alt="Paket Wisata 5">
+          <img src="asrama2.jpg" alt="Paket Wisata 5">
           <h3>Asrama 2 Yayasan: Donasi, Tempat Aman, Kesempatan Baru!</h3>
           <p style="margin-top: 40px;">Total Donasi : Rp. <?= $asrama2Total ?></p>
         </div></a>
         <a href="asrama3.php"><div class="paket-wisata-item">
-          <img src="gudang.jpg" alt="Paket Wisata 5">
+          <img src="asrama3.jpg" alt="Paket Wisata 5">
           <h3>Asrama 3 Yayasan: Donasi, Tempat Aman, Kesempatan Baru!</h3>
           <p style="margin-top: 40px;">Total Donasi : Rp. <?= $asrama3Total ?></p>
         </div></a>
